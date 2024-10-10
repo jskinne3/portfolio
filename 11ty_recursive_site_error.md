@@ -41,7 +41,7 @@ After adding another layer to the nested pile of directories, the `npx @11ty/ele
 ```
 Notice the many nestings of the `_site` directory in that error message!
 
-I encounter the problem in both v2.0.1 and the latest, v3.0.0 of Eleventy.
+You can view my Eleventy configuration file and other code [in GitHub](https://github.com/jskinne3/portfolio). I encounter the problem in both v2.0.1 and the latest, v3.0.0 of Eleventy.
 
 ## My solution
 
