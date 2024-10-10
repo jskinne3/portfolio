@@ -1,0 +1,125 @@
+/* fonts */
+@font-face {
+  font-family: "Eras";
+  src: url(fonts/ITC-Eras-Bold.woff2) format("woff2");
+}
+@font-face {
+  font-family: 'Duospace';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/Duospace-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Duospace';
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/Duospace-Italic.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Duospace';
+  font-style: normal;
+  font-weight: 600;
+  src: url(fonts/Duospace-Bold.woff2) format('woff2');
+}
+
+/* background colors */
+:root {
+  --font-color: #000;
+  --background: linear-gradient(120deg, rgba(255,187,249,1) 0%, rgba(226,179,255,1) 35%, rgba(180,177,255,1) 100%);
+}
+[data-theme="dark"] {
+  --font-color: #e0f7fa;
+  --background: linear-gradient(120deg, rgba(101,19,93,1) 0%, rgba(84,16,124,1) 35%, rgba(20,17,99,1) 100%);
+}
+
+/* elements */
+body {
+  margin: 0; padding: 0;
+  background: var(--background);
+  color: var(--font-color)
+}
+h1 {
+  font-family: 'Eras';
+  font-size: 3rem;
+  line-height: 1.1;
+}
+a {
+  text-underline-offset: 0.30em;
+  color: inherit;
+}
+main {
+  font-family: 'Duospace';
+  line-height: 1.4;
+  font-size: 1.1rem;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding-top: 0.6rem;
+  padding-bottom: 5rem;
+}
+code {
+  font-family: 'Duospace';
+  color: greenyellow;
+  /* background: linear-gradient(120deg, rgba(101,19,93,1) 0%, rgba(84,16,124,1) 35%, rgba(20,17,99,1) 100%); */
+  background: linear-gradient(120deg, rgba(20,17,99,1) 0%, rgba(84,16,124,1) 35%, rgba(101,19,93,1) 100%);
+  padding-right: 5px;
+  padding-left: 5px;
+}
+pre {
+  font-family: 'Duospace';
+  overflow:scroll;
+  background-color: rgba(101,19,93,1);
+  border: 1px solid fuchsia;
+}
+pre > code {
+  padding: 20px;
+  display: block;
+}
+hr {
+  border: 1px solid fuchsia;
+}
+
+/* background color toggle, must appear after body */
+.toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.theme-switch input {
+  display: none;
+}
+.theme-switch span:after {
+  content: "\1F318";
+  font-size: 2rem;
+}
+.theme-switch input:checked + span:after {
+  content: "\1F31E";
+}
+
+/* sizes */
+@media (min-width: 600px) {
+  main {
+    max-width: 530px;
+    font-size: 1.2rem;
+    margin: auto;
+  }
+}
+@media (min-width: 800px) {
+  main {
+    max-width: 730px;
+    font-size: 1.5rem;
+    margin: auto;
+  }
+  h1 {
+    font-size: 3.3rem;
+  }
+}
+@media (min-width: 1000px) {
+  main {
+    max-width: 930px;
+    font-size: 1.6rem;
+    margin: auto;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+}

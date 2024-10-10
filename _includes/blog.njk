@@ -1,0 +1,73 @@
+---
+title: John Skiles Skinner's blog
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="/blogscreen.css">
+    <link rel="stylesheet" type="text/css" media="print" href="/blogprint.css">
+
+    <title>{{ title }}</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}" />
+    <meta property="og:title"  content="{{ title }}" />
+
+    <meta name="description" content="{{ description }}">
+    <meta name="twitter:description" content="{{ description }}" />
+    <meta property="og:description"  content="{{ description }}" />
+    <meta name="twitter:image" content="https://johnskinnerportfolio.com/preview/card.jpg" />
+    <meta property="og:image"  content="https://johnskinnerportfolio.com/preview/card.jpg" />
+    <script>
+      function detectColorScheme(){
+        var theme="light";
+        if(localStorage.getItem("theme")){
+          if(localStorage.getItem("theme") == "dark"){
+            var theme = "dark";
+          }
+        } else if(!window.matchMedia) {
+          return false;
+        } else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          var theme = "dark";
+        }
+        if (theme=="dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      }
+      detectColorScheme();
+    </script>
+  </head>
+  <body>
+    <main>
+      {{ content | safe }}
+    </main>
+    <div class="toggle">
+      <label id="theme-switch" class="theme-switch" for="checkbox_theme">
+        <input type="checkbox" id="checkbox_theme"><span></span>
+      </label>
+    </div>
+    <script>
+      const toggleSwitch = document.querySelector('#theme-switch input[type="checkbox"]');
+
+      function switchTheme(e) {
+        if (e.target.checked) {
+          localStorage.setItem('theme', 'dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+          toggleSwitch.checked = true;
+        } else {
+          localStorage.setItem('theme', 'light');
+          document.documentElement.setAttribute('data-theme', 'light');
+          toggleSwitch.checked = false;
+        }    
+      }
+
+      toggleSwitch.addEventListener('change', switchTheme, false);
+
+      if (document.documentElement.getAttribute("data-theme") == "dark"){
+        toggleSwitch.checked = true;
+      }
+    </script>
+  </body>
+</html>
