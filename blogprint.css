@@ -21,7 +21,7 @@
   src: url(fonts/Duospace-Bold.woff2) format('woff2');
 }
 
-.toggle {
+.toggle, nav {
   display: none;
 }
 h1 {

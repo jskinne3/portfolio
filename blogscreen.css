@@ -47,14 +47,20 @@ a {
   text-underline-offset: 0.30em;
   color: inherit;
 }
-main {
+main, nav {
   font-family: 'Duospace';
   line-height: 1.4;
   font-size: 1.1rem;
   margin-left: 5vw;
   margin-right: 5vw;
   padding-top: 0.6rem;
+}
+main {
   padding-bottom: 5rem;
+}
+nav > span::after {
+  content:  "\276F ";
+  color: greenyellow;
 }
 code {
   font-family: 'Duospace';
@@ -97,14 +103,14 @@ hr {
 
 /* sizes */
 @media (min-width: 600px) {
-  main {
+  main, nav {
     max-width: 530px;
     font-size: 1.2rem;
     margin: auto;
   }
 }
 @media (min-width: 800px) {
-  main {
+  main, nav {
     max-width: 730px;
     font-size: 1.5rem;
     margin: auto;
@@ -114,7 +120,7 @@ hr {
   }
 }
 @media (min-width: 1000px) {
-  main {
+  main, nav {
     max-width: 930px;
     font-size: 1.6rem;
     margin: auto;

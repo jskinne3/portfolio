@@ -6,7 +6,7 @@ description: Before today I blogged with raw HTML, like an animal. When I switch
 
 # {{ title }}
 
-[John Skiles Skinner](https://johnskinnerportfolio.com/) \
+John Skiles Skinner \
 9 October 2024
 
 ---
