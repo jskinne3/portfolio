@@ -37,3 +37,7 @@ main, nav {
   font-size: 1.1em;
   line-height: 1.4;
 }
+img {
+  max-width: 100%;
+  border: 1px solid black;
+}

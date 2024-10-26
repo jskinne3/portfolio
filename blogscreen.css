@@ -83,6 +83,20 @@ pre > code {
 hr {
   border: 1px solid fuchsia;
 }
+img {
+  max-width: 100%;
+  border: 1px solid fuchsia;
+}
+blockquote {
+  font-size: smaller;
+}
+blockquote:before {
+  content: "\276F ";
+  color: greenyellow;
+}
+blockquote p {
+  display: inline;
+}
 
 /* background color toggle, must appear after body */
 .toggle {
