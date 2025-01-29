@@ -18,8 +18,8 @@ title: John Skiles Skinner's blog
     <meta name="description" content="{{ description }}">
     <meta name="twitter:description" content="{{ description }}" />
     <meta property="og:description"  content="{{ description }}" />
-    <meta name="twitter:image" content="https://johnskinnerportfolio.com/preview/card.jpg" />
-    <meta property="og:image"  content="https://johnskinnerportfolio.com/preview/card.jpg" />
+    <meta name="twitter:image" content="{{ image if image else "https://johnskinnerportfolio.com/preview/card.jpg" }}" />
+    <meta property="og:image"  content="{{ image if image else "https://johnskinnerportfolio.com/preview/card.jpg" }}" />
     <script>
       function detectColorScheme(){
         var theme="light";

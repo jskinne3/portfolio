@@ -43,6 +43,12 @@ h1 {
   font-size: 3rem;
   line-height: 1.1;
 }
+h3 {
+  color: greenyellow;
+}
+h4 {
+  color: fuchsia;
+}
 a {
   text-underline-offset: 0.30em;
   color: inherit;
