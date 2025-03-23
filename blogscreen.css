@@ -64,6 +64,11 @@ main, nav {
 main {
   padding-bottom: 5rem;
 }
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  color: fuchsia;
+}
 nav > span::after {
   content:  "\276F ";
   color: greenyellow;

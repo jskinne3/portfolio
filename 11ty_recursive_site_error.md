@@ -1,4 +1,5 @@
 ---
+tags: posts
 layout: blog.njk
 title: 11ty recursive _site error
 description: Before today I blogged with raw HTML, like an animal. When I switched to Eleventy, I got an intriguing recursive error.

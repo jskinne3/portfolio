@@ -1,4 +1,5 @@
 ---
+tags: posts
 layout: blog.njk
 title: "How to hack queer-hating lobbyists"
 description: "The Christian nationalist plan to hide, and how it backfires"
