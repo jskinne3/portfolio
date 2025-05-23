@@ -26,7 +26,7 @@ As my coworker explains in this demo, we knew AI's capability is limited:
 
 > The principle is to show you *not* that AI is great for everything, not to try to encourage you to stick AI into every product. &hellip; You can get yourself into trouble thinking that it can do things that it can't.
 
-<video>
+<video controls poster="play.jpg" onclick="this.play();">>
   <source src=https://johnskinnerportfolio.com/vid/GSAi_demo.mp4 >
 </video>
 
