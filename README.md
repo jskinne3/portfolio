@@ -1,7 +1,6 @@
-Personal portfolio website
+# Personal portfolio website
 
-To generate the static site locally, run
+To generate the serve site locally, run
 ```
-npx @11ty/eleventy
+npx @11ty/eleventy --serve 
 ```
-

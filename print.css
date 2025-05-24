@@ -30,11 +30,14 @@ nav > .back:after {
 nav > .next:before {
   content: "\21D2"
 }
-.toggle {
+.toggle, nav {
   display: none;
 }
 h1 {
   font-family: 'Eras';
+  font-size: 2em;
+}
+h1.index {
   font-size: 3em;
   text-align: center;
 }
@@ -42,16 +45,20 @@ a {
   text-underline-offset: 0.30em;
   color: inherit;
 }
-main {
+main, nav {
   font-family: 'Duospace';
   font-size: 1.1em;
   line-height: 1.4;
 }
-main > p:first-of-type:before {
+main.index > p:first-of-type:before {
   color: #777;
   content: "\25A7  \25A9  \25A8"
 }
-main > p:last-of-type:after {
+main.index > p:last-of-type:after {
   color: #777;
   content: "\25A7  \25A9  \25A8"
+}
+img {
+  max-width: 100%;
+  border: 1px solid black;
 }
