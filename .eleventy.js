@@ -3,6 +3,8 @@ const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("blogscreen.css");
   eleventyConfig.addPassthroughCopy("blogprint.css");
+  eleventyConfig.addPassthroughCopy("screen.css");
+  eleventyConfig.addPassthroughCopy("print.css");
   //eleventyConfig.addPassthroughCopy("**/*.woff2"); // broken
   eleventyConfig.addPassthroughCopy("fonts/*.woff2");
   eleventyConfig.addPassthroughCopy("**/*.jpg");

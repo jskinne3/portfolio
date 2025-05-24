@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "Eras";
+  src: url(fonts/ITC-Eras-Bold.woff2) format("woff2");
+}
+@font-face {
+  font-family: 'Duospace';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/Duospace-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Duospace';
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/Duospace-Italic.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Duospace';
+  font-style: normal;
+  font-weight: 600;
+  src: url(fonts/Duospace-Bold.woff2) format('woff2');
+}
+
+nav {
+  text-align: center;
+}
+nav > .back:after {
+  content: "\21D0"
+}
+nav > .next:before {
+  content: "\21D2"
+}
+.toggle {
+  display: none;
+}
+h1 {
+  font-family: 'Eras';
+  font-size: 3em;
+  text-align: center;
+}
+a {
+  text-underline-offset: 0.30em;
+  color: inherit;
+}
+main {
+  font-family: 'Duospace';
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+main > p:first-of-type:before {
+  color: #777;
+  content: "\25A7  \25A9  \25A8"
+}
+main > p:last-of-type:after {
+  color: #777;
+  content: "\25A7  \25A9  \25A8"
+}

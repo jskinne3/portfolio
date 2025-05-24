@@ -1,0 +1,139 @@
+@font-face {
+  font-family: "Eras";
+  src: url(fonts/ITC-Eras-Bold.woff2) format("woff2");
+}
+@font-face {
+  font-family: 'Duospace';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/Duospace-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Duospace';
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/Duospace-Italic.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Duospace';
+  font-style: normal;
+  font-weight: 600;
+  src: url(fonts/Duospace-Bold.woff2) format('woff2');
+}
+
+:root {
+  --font-color: #000;
+  --background: linear-gradient(120deg, rgba(255,187,249,1) 0%, rgba(226,179,255,1) 35%, rgba(180,177,255,1) 100%);
+}
+[data-theme="dark"] {
+  --font-color: #e0f7fa;
+  --background: linear-gradient(120deg, rgba(101,19,93,1) 0%, rgba(84,16,124,1) 35%, rgba(20,17,99,1) 100%);
+}
+
+body {
+  margin: 0; padding: 0;
+  background: var(--background);
+  color: var(--font-color)
+}
+footer {
+  margin-top: 3rem;
+  text-align: center;
+  color: fuchsia;
+}
+section#links {
+  margin-top: 3rem;
+}
+h3 {
+  color: greenyellow;
+}
+li {
+  margin-bottom: 7px;
+}
+.toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.theme-switch input {
+  display: none;
+}
+.theme-switch span:after {
+  content: "\1F318";
+  font-size: 2rem;
+}
+.theme-switch input:checked + span:after {
+  content: "\1F31E";
+}
+h1 {
+  font-family: 'Eras';
+  font-size: 5rem;
+  text-align: center;
+  line-height: 0.9;
+}
+h1 > .hb {
+  display: block;
+}
+a {
+  text-underline-offset: 0.30em;
+  color: inherit;
+}
+main {
+  font-family: 'Duospace';
+  line-height: 1.4;
+  font-size: 1.1rem;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding-top: 0.6rem;
+  padding-bottom: 5rem;
+}
+.i1:before {
+  content: "i";
+  position: absolute;
+  clip: rect(auto, auto, 0.28em, auto);
+  color: fuchsia;
+}
+.i2:before {
+  content: "i";
+  position: absolute;
+  clip: rect(auto, auto, 0.25em, auto);
+  color: greenyellow;
+}
+main > p:first-of-type:before {
+  color: greenyellow;
+  content: "\25A7  \25A9  \25A8"
+}
+main > p:last-of-type:after {
+  color: fuchsia;
+  content: "\25A7  \25A9  \25A8"
+}
+
+@media (min-width: 600px) {
+  main {
+    max-width: 530px;
+    font-size: 1.2rem;
+    margin: auto;
+  }
+}
+@media (min-width: 800px) {
+  main {
+    max-width: 730px;
+    font-size: 1.5rem;
+    margin: auto;
+  }
+  h1 {
+    font-size: 7rem;
+  }
+  section#links {
+    margin-top: 7rem;
+  }
+}
+@media (min-width: 1000px) {
+  main {
+    max-width: 930px;
+    font-size: 1.6rem;
+    margin: auto;
+  }
+  h1 {
+    font-size: 8rem;
+  }
+}
