@@ -1,13 +1,15 @@
 const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("blogscreen.css");
-  eleventyConfig.addPassthroughCopy("blogprint.css");
   eleventyConfig.addPassthroughCopy("screen.css");
   eleventyConfig.addPassthroughCopy("print.css");
+  eleventyConfig.addPassthroughCopy("old_main.css");
+  eleventyConfig.addPassthroughCopy("old_blog.css");
   //eleventyConfig.addPassthroughCopy("**/*.woff2"); // broken
   eleventyConfig.addPassthroughCopy("fonts/*.woff2");
-  eleventyConfig.addPassthroughCopy("**/*.jpg");
+  eleventyConfig.addPassthroughCopy("img/*.jpg");
+  eleventyConfig.addPassthroughCopy("img/*.png");
+  eleventyConfig.addPassthroughCopy("img/*.gif");
 
   eleventyConfig.addPlugin(feedPlugin, {
 		type: "atom", // or "rss", "json"

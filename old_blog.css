@@ -1,0 +1,83 @@
+h1 {font-family: "Helvetica";}
+h2, h3, h4, th {font-family: "Varela Round", Helvetica;}
+samp, kbd, pre, code {
+  background-color: #DDD;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.block {
+  display: block;
+  margin-top: 10px;
+  margin-left: 4vw;
+  max-width: 90vw;
+}
+.shadow {
+  -webkit-box-shadow: 2px 2px 5px #555;
+  -moz-box-shadow: 2px 2px 5px #555;
+  box-shadow: 2px 2px 5px #555;
+}
+pre {
+  overflow: scroll;
+  padding: 7px;
+}
+time {
+  font-size: smaller;
+  margin-left: 4vw;
+}
+article {
+  margin-bottom: 80px;
+}
+h2 {margin-top: 0;}
+.articleillushead {
+  margin-left: 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+.headillus {
+  max-width: 90vw;
+  margin-top: 5vw;
+  margin-left: 4vw;
+
+}
+table tr > td:last-of-type {
+  text-align: right;
+}
+table td, table th {
+  padding: 5px 5px 5px 0;
+}
+table th {
+  color: #AAA;
+}
+.ind {
+  margin-left: 1.2em;
+  display: block;
+}
+.com {
+  color: #a442f4;
+}
+figcaption {
+  font-size: small;
+  font-style: italic;
+}
+
+@media all and (min-width: 800px) {
+
+  .block, time {
+    max-width: 60vw;
+  }
+  .articleillushead {
+    max-width: 580px;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    margin-left: 4vw;
+  }
+  .headillus {
+    width: 200px;
+    margin-top: 0;
+    margin-left: 0;
+    text-align: left;
+  }
+
+}

@@ -1,0 +1,381 @@
+html, body {padding: 0; margin: 0; font-family: "Open Sans", Helvetica, sans-serif; font-size: 12pt;}
+* {
+  box-sizing: border-box;
+}
+main {background-color: white;}
+.row {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.one-third {
+  flex: 1;
+}
+.two-thirds {
+  flex: 2;
+}
+
+/* first row */
+#head {
+  background-color: #4eb8f0;
+}
+
+/* title block */
+#title {
+  position: relative;
+  perspective: 600px;
+  min-height: 90vw;
+  transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  color: #004f19;
+}
+#ywall {
+  background-color: #fff868;
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  transform: rotateY(25deg) translateZ(-2em);
+}
+#owall {
+  background-color: #aeff00;
+  width: 80%;
+  height: 70%;
+  position: absolute;
+  bottom: 11%;
+  right: 10%;
+  transform: rotateY(-35deg);
+  opacity: 0.6;
+}
+#title h1 {
+  position: absolute;
+  transform: rotateY(-30deg) translateZ(1em);
+  font-size: 11vw;
+  left: 20%;
+  top: 15%;
+  font-weight: normal;
+  font-family: "Archivo Narrow";
+}
+#title h2 {
+  position: absolute;
+  top: 5vw;
+  left: 15%;
+  font-size: 4vw;
+  text-transform: uppercase;
+  font-family: "Varela Round";
+}
+#title h3 {
+  position: absolute;
+  bottom: -0.5vw;
+  right: 5vw;
+  font-size: 4vw;
+  text-transform: uppercase;
+  text-align: right;
+  font-family: "Varela Round";
+}
+#title:hover {
+  perspective: 2500px;
+  transition: all 2s ease;
+  -webkit-transition: all 2s ease;
+}
+
+/* motto block */
+#motto {
+  padding: 8vw;
+  min-height: 80vw;
+  font-family: "Archivo Narrow";
+  position: relative;
+  perspective: 600px;
+  transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+}
+#iwall {
+  background-color: #fcb0f7;
+  width: 90%;
+  height: 80%;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  transform: rotateY(-10deg) translateZ(-2em);
+}
+#whoami {
+  position: absolute;
+  left: 14%;
+  top: 15%;
+  max-width: 75%;
+  font-size: 3.7vw;
+  color: #560f52;
+  transform: rotateY(3deg);
+}
+#motto:hover {
+  perspective: 2500px;
+  transition: all 2s ease;
+  -webkit-transition: all 2s ease;
+}
+#whoami strong {
+  font-family: "Varela Round";
+  font-size: larger;
+  color: black;
+}
+
+p {max-width: 90vw;}
+h1, h2, h3, h4, p, address {padding-left: 4vw;}
+h1, h2, h3, h4, nav {font-family: "Archivo Narrow"; font-weight: normal;}
+h2 {font-size: 30pt;}
+
+address {text-decoration: none;}
+figure {padding: 0; margin: 0; background-color: white;}
+nav {
+  text-align: center;
+  font-size: larger;
+  padding: 100px;
+}
+#navgroup {
+  margin-right: 35px;
+  margin-left: 35px;
+}
+.nomartop {
+  margin-top: 0;
+  padding-top: 0;
+}
+.martop {
+  margin-top: 20vw;
+}
+.invisilink {
+  text-decoration: none;
+  color: black;
+}
+.darkband {
+  padding: 30px 0 35px 0;
+  background-color: #333;
+  color: white;
+  position: relative;
+}
+.darkband a {
+  color: white;
+}
+.vidband {
+  width: 100%;
+  background-color: #333;
+  text-align: center;
+}
+.imageband {
+  width: 100%;
+  padding: 10px 0 10px 0;
+}
+#sci-illus-imageband {
+  background-image: url(img/ScratchBoardBug.jpg);
+  background-position: center 65%;
+  background-size: cover;
+  height: 300px;
+}
+#idsue-team-imageband {
+  background-image: url(img/IDSUEteam.jpg);
+  background-position: center center;
+  background-size: cover;
+  height: 400px;
+}
+#bioinfo-imageband {
+  background-image: url(img/RNA.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 24vw;
+}
+#discovery-imageband {
+  background-image: url(img/shelfbackground.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 3px 5px 5px 0;
+  line-height: 1.9em;
+  box-shadow: 10px 0 0 0 rgba(0, 0, 0, 0.75), -10px 0 0 0 rgba(0, 0, 0, 0.75);
+}
+.overlay a {color: silver;}
+aside.image-inset {
+  background-color: #333;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+}
+figure.inset img {
+
+
+}
+nav a {
+  padding: 5px;
+  background-color: black;
+  border: 1px solid #555;
+  text-decoration: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  line-height: 250%;
+  color: white;
+}
+nav a:hover {
+  background-color: orange;
+  color: black;
+  transition: all 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+}
+.flexband {
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.flexband div {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; 
+  flex: 1;
+}
+.flexband div a {
+  width: 100%;
+  display: block;
+  height: 100%;
+}
+#auditor {
+  background-image: url(img/auditor.png);
+}
+#regent {
+  background-image: url(img/regent.png);
+}
+#council {
+  background-image: url(img/council.png);
+}
+#lamm {
+  background-image: url(img/lamm.png);
+}
+#warning {
+  background-image: url(img/warning.jpg);
+}
+#ebtl {
+  background-image: url(img/EbtL.png);
+  border: 20px solid white;
+}
+#datadev1 {
+  background-image: url(img/HousingAffordabilityPieCharts.png);
+  margin: 20px;
+  height: 300px;
+}
+#datadev2 {
+  background-image: url(img/CILdata1.png);
+  margin: 20px;
+  height: 300px;
+}
+#datadev3 {
+  background-image: url(img/CILdata2.png);
+  margin: 20px;
+  height: 300px;
+}
+#housing {
+  background-image: url(img/HousingAffordabilityPieCharts.png);
+  height: 100%;
+  background-size: contain;
+}
+video {
+  max-width: 100% !important;
+  height: auto !important;
+}
+.imagerow {
+  display: -webkit-flex;
+  display: flex;
+}
+.phreakphoto {
+  flex: 1;
+  height: 30vw;
+  background-size: cover;
+  background-position: center center;
+  cursor: pointer;
+}
+footer #attribution {padding: 20px;}
+main strong {
+  font-family: "Varela Round";
+  font-size: larger;
+}
+#instrument {
+  border: 1px solid black;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: .5em 1.4em .5em .7em;
+  line-height: 1.3;
+  width: 100%;
+}
+.inset-text{
+  text-align: center;
+}
+
+@media all and (min-width: 600px) {
+
+  .row { 
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+
+  /* title block */
+  #title {
+    min-height: 40vw;
+  }
+  #title h1 {
+    font-size: 5vw;
+  }
+  #title h2 {
+    font-size: 1.8vw;
+    top: 2vw;
+  }
+  #title h3 {
+    font-size: 1.8vw;
+    right: 2vw;
+  }
+  #iwall {
+    height: 75%;
+  }
+
+  /* motto block */
+  #motto {
+    min-height: 0;
+  }
+  #whoami {
+    font-size: 2vw;
+  }
+
+  p {max-width: 60vw;}
+  .flexband { 
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+  aside.image-inset {
+    padding: 0;
+    position: absolute;
+    right: 30px;
+    top: -20px;
+    border: 10px solid white;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  aside.image-inset div, aside.image-inset img {
+    margin: 0;
+    padding: 0;
+  }
+  figure.inset img {
+    border: 1px solid #999;
+  }
+  .martop {
+    margin-top: 7vw;
+  }
+  .inset-text{
+    text-align: left;
+  }
+
+}
