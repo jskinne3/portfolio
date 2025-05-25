@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Making a simple website with AWS</title>
+  <meta name="description" content="Making a simple website with AWS">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+
+  <meta property="og:title" content="Making a simple website with AWS" />
+  <meta property="og:description" content="In which I build a simple, static website using Amazon S3 and Route 53." />
+  <meta property="og:image" content="http://johnskinnerportfolio.com/blog/img/static.jpg" />
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Making a simple website with AWS">
+  <meta name="twitter:description" content="In which I build a simple, static website using Amazon S3 and Route 53.">
+  <meta name="twitter:image" content="http://johnskinnerportfolio.com/blog/img/static.jpg">
+  
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans" >
+</head>
+<body>
+
+  <h1><a class="invisilink" href="http://johnskinnerportfolio.com/">John Skiles Skinner's portfolio</a></h1>
+
+  <article>
+    <div class="darkband">
+      <div class="articleillushead">
+        <div>
+          <img class="headillus" src="/img/static.jpg" alt="A picture of colorful television static" />
+        </div>
+        <div>
+          <h2>Making a simple, static website with AWS</h2>
+          <p>
+            In which I build a simple, static website (no server-side code) hosted on Amazon Web Services. This post is about configuring Route 53 and S3 to put a website live.
+          </p>
+          <time class="block">2 July 2019</time>
+        </div>
+      </div>
+    </div>
+    <p>
+      First, a warning. These instructions for configuring a static website <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/RoutingToS3Bucket.html">do not and cannot support https</a>. If you want this encryption feature, you will have to name your buckets differently and <a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">involve AWS CloudFront</a>.
+    </p>
+    <h4>Register a domain name with Route 53</h4>
+    <p>
+      I'm planning to buy the domain <code>cultofsatan.org</code>. Having visited the URL, it looks empty and probably ready for purchase.
+    </p>
+    <p>
+      In the <a href="https://console.aws.amazon.com">AWS console</a> I click on <a href="https://console.aws.amazon.com/route53">Route 53</a>. I click on Domain registration, then on the Register Domain button.
+    </p>
+    <figure>
+      <img class="block shadow" src="/img/staticaws1.png" />
+      <figcaption class="block">The Route 53 link to purchase a domain name</figcaption>
+    </figure>
+    <p>
+      I type in my desired domain name and choose the .org TLD from the drop-down. I fill in contact details and whatever else is needed to complete the purchase.
+    </p>
+    <figure>
+      <img class="block shadow" src="/img/staticaws2.png" />
+      <figcaption class="block">This domain name turns out to be available!</figcaption>
+    </figure>
+    <p>
+      I am asked to wait while domain registration takes place. It took 15 minutes. Meanwhile I made a quick HTML document (just a placeholder, really) and name it <code>index.html</code>. (You can of course check out this HTML by viewing the source of the <a href="http://cultofsatan.org">cultofsatan.org</a> webpage)
+    </p>
+
+    <h4>Put the page up in S3</h4>
+
+    <p>
+      To host this HTML document, I create a bucket in <a href="https://s3.console.aws.amazon.com/s3">S3</a> and accept all the default settings. I name it the same name as the domain, including the <code>.org</code>at the end! Choosing the same name will allow Route 53 to find it later.
+    </p>
+    <figure>
+      <img class="block shadow" src="/img/staticaws3.png" />
+      <figcaption class="block">Creating an Amazon S3 bucket</figcaption>
+    </figure>
+    <p>
+      It dumps me back at the list of all buckets, from which I pick out the bucket I just created. I upload my index.html file. Then I go to the Properties tab and into Static Website Hosting.
+    </p>
+    <figure>
+      <img class="block shadow" src="/img/staticaws4.png" />
+      <figcaption class="block">Configure the bucket as a static website</figcaption>
+    </figure>
+    <p>
+      I click "Use this bucket to host a website" and enter "index.html" as the index document name. It shows me my new endpoint name: <a href="http://cultofsatan.org.s3-website.us-east-2.amazonaws.com">http://cultofsatan.org.s3-website.us-east-2.amazonaws.com</a>
+    </p>
+
+    <h4>Connect the routing to the page</h4>
+
+    <p>
+      I return to Route 53 and click on the Hosted Zone I've previously created. I choose to create an A record. I find the right S3 website endpoint appears in the dropdown.
+    </p>
+    <figure>
+      <img class="block shadow" src="/img/staticaws5.png" />
+      <figcaption class="block">An A record hooks the domain to the hosting</figcaption>
+    </figure>
+    <p>
+      What if the expected endpoint does not appear? I have coaxed AWS into finding it by guessing at a fully qualified domain name. Check the hosting region against <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_website_region_endpoint">list of endpoints</a> and check <a href="https://forums.aws.amazon.com/thread.jspa?threadID=94255">the form of the endpoint name</a>.
+    </p>
+    <p>
+      <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html">This guide</a> has a useful template of bucket endpoint name formats. Don't forget that Route 53 will only find your bucket if it is configured for Static Website Hosting, as above.
+    </p>
+
+    <h4>Setting permissions</h4>
+
+    <p>
+      Route 53 is now hooked up to my S3 bucket. Will my domain name show me my HTML document? I visit <a href="http://cultofsatan.org">cultofsatan.org</a> to find out!
+    </p>
+    <p>
+      No. I got an <code>403 Forbidden: Access Denied</code> error message. Permissions need to be set to allow us to see the website.
+    </p>
+    <figure>
+      <img class="block shadow" src="/img/staticaws6.png" />
+      <figcaption class="block">The error caused by incorrectly set permissions</figcaption>
+    </figure>
+    <p>
+      In the permissions tab I turn off "Block all public access".
+    </p>
+    <figure>
+      <img class="block shadow" src="/img/staticaws7.png" />
+      <figcaption class="block">Uncheck the box that blocks access</figcaption>
+    </figure>
+    <p>
+      However, I still get Access Denied after doing this. I visit the "Bucket Policy" button to enter some JSON.
+    </p>
+    <pre class="block">
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AddPerm",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::cultofsatan.org/*"
+        }
+    ]
+}
+</pre>
+    <p>
+      I am shown a foreboding warning message when I enter this permissive policy. But, <a href="https://serverfault.com/questions/888487/why-does-aws-recommend-against-public-s3-buckets">it's necessary</a>!
+    </p>
+    <figure>
+      <img class="block shadow" src="/img/staticaws8.png" />
+      <figcaption class="block">Bucket policy setting</figcaption>
+    </figure>
+    <p>
+      But it works! My website is now live when I refresh <a href="http://cultofsatan.org">cultofsatan.org</a>!
+    </p>
+    <p>
+      You might also want to <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-routing-traffic-for-subdomains.html">add a www subdomain</a> to your static website.
+    </p>
+    <p>
+      Remember, however, if you want https the instructions above won't work for you. The reason is that AWS only offers TLS and SSL as a part of CloudFront, which <a href="https://aws.amazon.com/premiumsupport/knowledge-center/cloudfront-domain-https/">does not support bucket names with a dot (period) in them</a>.
+    </p>
+
+  </article>
+  <hr />
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+
+</body>
+</html>

@@ -10,6 +10,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("img/*.jpg");
   eleventyConfig.addPassthroughCopy("img/*.png");
   eleventyConfig.addPassthroughCopy("img/*.gif");
+  eleventyConfig.addPassthroughCopy("vid/*.mp4");
 
   eleventyConfig.addPlugin(feedPlugin, {
 		type: "atom", // or "rss", "json"

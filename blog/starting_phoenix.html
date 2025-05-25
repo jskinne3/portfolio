@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>John Skiles Skinner's portfolio</title>
+  <meta name="description" content="My expience, including the mistakes I made, getting started with Elixir and Phoenix">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans" >
+</head>
+<body>
+  <h1><a class="invisilink" href="http://johnskinnerportfolio.com/">John Skiles Skinner's portfolio</a></h1>
+
+  <article>
+    <div class="darkband">
+      <h2>Getting started with Elixir and Phoenix</h2>
+      <p>
+        I've seen a lot of blog posts about getting started with a new language or framework that make the process seem like there were no dead ends or moments of confusion. Here was my expience, including the mistakes I made.
+      </p>
+      <time class="block">19 April 2018</time>
+    </div>
+    
+    <h4>A false start</h4>
+    <p>
+      I started following the first google result, which is <a href="https://phoenixframework.readme.io/v0.10.0/docs/getting-started">a tutorial in the official phoenix documentation</a>.
+    </p>
+    <p>
+      During the first step, cloning a repository, I run into <samp>You are in 'detached HEAD' state</samp> and spend a while resolving that. Some packages then ask to be approved; this is not mentioned in the tutorial, but I assume that they should be approved. During the second step, creating a new application, I saw this error:
+    </p>
+    <samp class="block">
+      == Compilation error in file lib/phoenix/socket.ex ==<br />
+      ** (ArgumentError) Access is not a protocol, cannot derive Access for Phoenix.Socket
+    </samp>
+    <p>
+      Looking up the error, it turns that the tutorial is out of date! As so often happens, that first google hit is not the best. Wouldn't it be nice if they noted that it was old documentation at the top of the page?
+    </p>
+    <h4>A better path</h4>
+    <p>
+      I experiment with switching to <a href="https://hexdocs.pm/phoenix/up_and_running.html">a newer document</a> and it seems to work well. So, I include this information <a href="https://github.com/phoenixframework/phoenix/issues/1601">a GitHub discussion</a> about this error. Not only does this contribute to the community of developers, it is a signpost I leave for myself if I somehow end up going down the same path again.
+    </p>
+    <p>
+      I get as far as building a database with <kbd>mix ecto.create</kbd> and discover that Postgres cannot be not found.
+      I had to restart PostgreSQL with:
+    </p>
+    <kbd class="block">
+      brew services stop postgresql<br />
+      rm /usr/local/var/postgres/postmaster.pid<br />
+      brew services start postgresql
+    </kbd>
+    <p>
+      I tried running <kbd>mix ecto.create</kbd> again and this time saw error:
+    </p>
+    <samp class="block">
+      role "postgres" does not exist
+    </samp>
+    <p>
+      The command <kbd>createuser -s postgres</kbd> resolves this. Re-running the creation attempt, the database is created!
+    </p>
+    <p>
+      This time <kbd>mix phx.server</kbd> ran without a hitch. Visiting localhost:4000 in my browser, I see Phoenix running! Altogether much easier than the first time that I set up Rails. I spent only a couple of hours, rather than a couple of days.
+    </p>
+    <h4>One setp onward</h4>
+    <p>
+      I contiunted on to <a href="https://hexdocs.pm/phoenix/adding_pages.html">the next step</a> of that more up-to-date tutorial. I pasted in their code to add a new page to my project. I got this error:
+    </p>
+    <samp class="block">
+      module HelloWeb is not loaded and could not be found
+    </samp>
+    <p>
+      I conclude that this is because I choose a different project name than the tutorial, so HelloWeb had to be transformed into PhoenixTestWeb in a number of locations to match the name of my project. Then I have a new working page!
+    </p>
+    <p>
+      The ease of setup makes me pretty enthusiastic about Phoenix. I'll be writing about it in the future I'm sure!
+    </p>
+
+  </article>
+  <hr />
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+
+</body>
+</html>

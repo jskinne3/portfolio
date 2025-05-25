@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My first Glitch web app</title>
+  <meta name="description" content="I used Glitch &amp; Express to build an app about Love &amp; Seduction in the 19th Century">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+
+  <meta property="og:title" content="My first Glitch web app" />
+  <meta property="og:description" content="I used Glitch &amp; Express to build an app about Love &amp; Seduction in the 19th Century" />
+  <meta property="og:image" content="https://johnskinnerportfolio.com/blog/img/futurelightning.gif" />
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="My first Glitch web app">
+  <meta name="twitter:description" content="I used Glitch &amp; Express to build an app about Love &amp; Seduction in the 19th Century">
+  <meta name="twitter:image" content="https://johnskinnerportfolio.com/blog/img/futurelightning.gif">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans" >
+
+</head>
+<body>
+  <h1><a class="invisilink" href="https://johnskinnerportfolio.com/">John Skiles Skinner's portfolio</a></h1>
+
+  <article>
+    <div class="darkband">
+      <div class="articleillushead">
+        <div>
+          <img class="headillus" src="/img/futurelightning.gif" alt="A futuristic drawing of a glowing human form with lightning bolts radiating from the head" />
+        </div>
+        <div>
+          <h2>Into the Future with Glitch</h2>
+          <p>
+            My first experience building a Glitch web app. I used the default Glitch setup of Node.js with Express on some fascinating historical data freely available from an open-source project.
+          </p>
+          <time class="block" datetime="2019-06-17">17 June 2019</time>
+        </div>
+      </div>
+      
+    </div>
+    
+    <h4>Why Glitch?</h4>
+    <p>
+      Glitch made me feel like I was living in the future. As I was building a Node app on Glitch, I found it amusing to come across Node tutorials that said things like "make sure Node is installed on your computer". After just one day of using Glitch this advice feels as archaic as a floppy disk. As a Glitch developer, I don't concern myself with <em>hardware</em>. I don't install things on my computer. Suddenly the idea of a local development environment seems quaint.
+    </p>
+    <p>
+      This blog post describes my first Glitch project, <a href="https://love-and-seduction.glitch.me/">Love & Seduction in the 19th Century</a>. It's a very simple app that displays randomly-selected text when a user pushes a button. The text source is <a href="https://github.com/CDRH/data_ncs_loveandseduction">data from a digital humanities project</a>.
+    </p>
+    <p>
+      Getting started with Glitch is so simple that it's almost confusing. You visit <a href="https://glitch.com/">Glitch.com</a>, press the button that says New Project, and select one of three project types. At that point you have a running, deployed project. Everything else is (or can be) just a matter of customizing this default project.
+    </p>
+    <p>
+      Here's how the button looks:
+    </p>
+    <img class="block shadow" src="/img/glitchnew.png" alt="A screenshot of the Glitch's New Project menu, which consists of: a basic web page, a Node app built on Express, and a Node app with a database" />
+    <h4>Client-side code</h4>
+    <p>
+      The default Glitch Express Node project comes with a <samp>public/client.js</samp> file containing all the code that makes the default project work. This is client-side code, executed by the visiting user's web browser. After my modifications, my client-side JavaScript looks like this:
+    </p>
+    <kbd class="block">
+      <span class="com">// client-side js<br>
+      // run by the browser each time your view template is loaded<br></span>
+      <br>
+      <span class="com">// a function to connect to server and get text</span><br>
+      const findLove = async function() {<br>
+        <span class="ind">let love = await axios.get('/text');<br>
+        return love['data'];</span>
+      };<br>
+      <br>
+      <span class="com">// define variables that reference elements on our page<br></span>
+      const loveForm = document.forms[0];<br>
+      const loveBox = document.getElementById('lovebox');<br>
+      <br>
+      <span class="com">// a helper function that adds the text into the HTML<br></span>
+      const showLove = function(love) {<br>
+        <span class="ind">loveBox.innerHTML = love;</span>
+      }<br>
+      <br>
+      <span class="com">// listen for button to be pressed, replace the text<br></span>
+      loveForm.onsubmit = async function(event) {<br>
+        <span class="ind">
+          <span class="com">
+            // stop form submission from refreshing the page<br>
+          </span>
+          event.preventDefault();<br>
+          <span class="com">
+            // select a random text item<br>
+          </span>
+          love = await findLove();<br>
+          showLove(love);
+        </span>
+      };<br>
+      <br>
+    </kbd>
+    <p>
+      I've repurposed and renamed code that interacts with the HTML form in the <kbd>views/index.html</kbd> page. (I haven't included my modifications to the index page in this blog post. But, because every Glitch app is open source by default, you can <a href="https://glitch.com/edit/#!/love-and-seduction?path=views/index.html:1:0">check them out for yourself</a>!)
+    </p>
+    <p>
+      The first bit of my <samp>public/client.js</samp> file contains an HTTPS connection to a path within the project. This connection is the channel through which my client-side JavaScript shall connect with server-side code. The server will provide the client with information that it will use to update what the user sees in their browser.
+    </p>
+    <p>
+      This is the code for the connection to the data source:
+    </p>
+    <kbd class="block">
+      <span class="com">// a function to connect to server and get text</span><br>
+      const findLove = async function() {<br>
+      <span class="ind">let love = await axios.get('/text');<br>
+      return love['data'];</span>
+      };<br>
+      <br>
+    </kbd>
+    <p>
+      Thanks to <a href="https://glitch.com/@cassey">Cassey Lottman</a> for the advice to use the <a href="https://github.com/axios/axios">Axios library</a> as an alternative to the default <samp>XMLHttpRequest</samp> technique. Thanks to her, also, for suggesting the <samp>await</samp> operator to tell my client-side JavaScript to wait for a response from the server before proceeding. This helped me deal with mysteries of asynchronous code!
+    </p>
+    <h4>Server-side code</h4>
+    <p>
+      My server-side code, which lives in the <samp>server.js</samp> file, connects to a source of data and it provides an API method through which a randomly-chosen item from that data is transmitted:
+    </p>
+    <kbd class="block">
+      <span class="com">// server.js<br>
+      // where your node app starts<br></span>
+      <br>
+      <span class="com">// init project<br></span>
+      const express = require('express');<br>
+      const app = express();<br>
+      <br>
+      <span class="com">// Express routes included in default project<br></span>
+      app.use(express.static('public'));<br>
+      app.get('/', function(request, response) {<br>
+      <span class="ind">response.sendFile(__dirname + '/views/index.html');</span>
+      });<br>
+      <br>
+      <span class="com">// create array of data from file<br></span>
+      const loves = require('./data.json');<br>
+      <br>
+      <span class="com">// a route so client can connect to get data<br></span>
+      app.get('/text', function(request, response) {<br>
+      <span class="ind">response.send(loves['text'][Math.floor(<span class="ind">Math.random()*loves['text'].length
+      </span>)]);</span>
+      });<br>
+      <br>
+      <span class="com">// listen for requests<br></span>
+      const listener = app.listen(process.env.PORT, function() {<br>
+      <span class="ind">console.log('Your app is listening on port ' + listener.address().port);</span>
+      });<br>
+      <br>
+    </kbd>
+    <p>
+      My data are text excerpts from literature, court cases, journals and other documents dating from the 19th Century. The documents are part of a project of the University of Nebraska, hosted by the <a href="https://cdrh.unl.edu/">Center for Digital Research in the Humanities</a>. The project archives historical materials on the history of love and seduction. It is open source. Thanks to <a href="https://cdrh.unl.edu/about/staff/dussault">Jessica Dussault</a> for pointing me to this fascinating, free material!
+    </p>
+    <figure>
+      <img class="shadow block" src="/img/uninvitedguest.jpg" alt="An Pre-Raphaelite style painting of allegorical figures, including a woman in a white wedding dress, another woman bending over to examine the train of the dress, and Cupid with arrows." />
+      <figcaption class="block">The Uninvited Guest by Eleanor Fortescue-Brickdale</figcaption>
+    </figure>
+    <p>
+      <em>Note:</em> the 19th Century was horrible. I've selected text snippets for my project that seem like fun in isolation. If you read many of them in context you'll be reminded what extraordinary misogyny and stultifying social conventions were widespread in uncomfortably recent times.
+    </p>
+    <p>
+      These strings are stored in a .json file that I'm treating as if it were a database. My server-side JS <kbd>require</kbd>s the data file to get access to it, then chooses a random string with:
+    </p>
+    <kbd class="block">
+      loves['text'][Math.floor(
+        <span class="ind">Math.random()*loves['text'].length</span>
+      )];
+    </kbd>
+    <p>
+      I find that code for random selection of an item from an array to be long and clumsy, but I guess that's how it's done in JS.
+    </p>
+    <h4>The finished Glitch web app</h4>
+    <p>
+      All of this functionality could have been built entirely as front-end code. But, I like the idea of having the data access and selection take place on a server. In the future I may decide to store data in another way, such as in a real database. My choice to locate data logic on the server means I'll not need to change client-side code if my data storage method changes.
+    </p>
+    <p>
+      Now that I've written the app, <em>it is deployed</em>. Everything we create on glitch snaps to attention immediately, keystroke for keystroke.
+    </p>
+    <p>
+      The project detailed in this blog post <a href="https://love-and-seduction.glitch.me/">is running here</a> and I've also embedded it below. Have fun!
+    </p>
+    <div style="height: 486px; width: 100%;">
+      <iframe
+        allow="geolocation; microphone; camera; midi; encrypted-media"
+        src="https://glitch.com/embed/#!/embed/love-and-seduction?previewSize=100&previewFirst=true&sidebarCollapsed=true"
+        alt="love-and-seduction on Glitch"
+        style="height: 100%; width: 100%; border: 0;">
+      </iframe>
+    </div>
+
+  </article>
+  <hr />
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+
+</body>
+</html>

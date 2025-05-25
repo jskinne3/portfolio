@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>John Skiles Skinner's portfolio</title>
+  <meta name="description" content="Re-thinking return values of Ruby methods">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans" >
+</head>
+<body>
+  <h1><a class="invisilink" href="http://johnskinnerportfolio.com/">John Skiles Skinner's portfolio</a></h1>
+
+  <article>
+    <div class="darkband">
+      <div class="articleillushead">
+        <div>
+          <img class="headillus" src="/img/makeAmess.png" />
+        </div>
+        <div>
+          <h2>Many happy returns</h2>
+          <p>An experience I had re-writing some (of my own) code with OOP design guidelines in mind, in particular those advocated by Rubyest <a href="https://www.sandimetz.com/">Sandi Metz</a>. Plus, reflections on carefully choosing a method's return value.</p>
+          <time class="block">19 September 2018</time>
+        </div>
+      </div>
+    </div>
+    <h4>What I started with</h4>
+    <p>
+      I started with the below code. It's a data importer that expects a certain format of .csv file and creates certain database records from that input.
+    </p>
+<pre class="block">
+class Membership < ApplicationRecord
+  require 'csv'
+
+  def self.import(file)
+    return 0 if file.nil?
+    initial_membership = Membership.count
+    CSV.foreach(file.path) do |row|
+      # ...
+      # Code to create db record from fields in row
+      # ...
+      end
+    end
+    return Membership.count - initial_membership
+  end
+
+end
+</pre>
+    <h4>What are the problems?</h4>
+    <p>
+      As you can see I've elided code in the middle of this function. We needn't be concerned the details of how this thing picks .csv lines apart. However, I'll share that the code behind the dot-dot-dots is the minimum code that will work to parse a certain fixed format line. It fails in most every case that departs from the assumptions of that fixed format, for example, the case in which the number of fields in a line differs from my expectation.
+    </p>
+    <p>
+      Wouldn't it be nice if the method provided some kind of error or warning about lines that don't have the expected number of fields? Well, it doesn't&thinsp;&mdash;&thinsp;the return value is a single integer. There's nowhere to stick any additional information we'd want to show our users. That minimalistic return value will have to be replaced.
+    </p>
+    <p>
+      Furthermore, to catch an error like an unexpected number of fields on a line, we'll have to add some sort of conditional statement that counts fields and handles the error. If we were to add all the conditional statements needed to catch this and other possible errors, the method will become lengthy and confusing.
+    </p>
+    <p>
+      It is often said that a method should do only one thing. In particular, Sandi Metz contends <a href="https://robots.thoughtbot.com/sandi-metz-rules-for-developers">that methods should be no longer than five lines of code</a>. The rules of good design are telling me I need to make this method shorter.
+    </p>
+    <h4>Abstracting</h4>
+    <p>
+      I'm going to re-write <kbd>.import</kbd> so that it calls another yet-to-be-written, yet-to-be-named method, that I will assume contains the messy details of parsing a line of data. I'll also assume that my return value is some data structure containing informative logging of how the .csv import process went.
+    </p>
+<pre class="block">
+class Membership < ApplicationRecord
+  require 'csv'
+
+  def self.import(file)
+    output_log = ...
+    return ... if file.nil?
+    CSV.foreach(file.path) do |row|
+      output_log << some_method_name(row)
+    end
+    return output_log
+  end
+
+end
+</pre>
+    <p>
+      You wouldn't quite say that this method does only one thing. It does two closely related things: iterates over a .csv file, and rejects <kbd>nil</kbd> files. It's also one line longer than the guideline of five lines. Looks like there is one more extraction we could do. Let's come back to it if it seems worthwhile.
+    </p>
+    <h4>What name to choose? What object to modify? Better: what message to pass</h4>
+    <p>
+      <i>"This is the question they asked themselves: in what object should I put this code? The question you should ask yourself, instead, is: what message should I send?"</i><br />
+      &nbsp; &nbsp;&mdash;&thinsp;Sandi Metz
+    <p>
+      The method name <kbd>some_method_name</kbd> is, of course, a placeholder. What should it actually be named? Programmers often stress the virtue of choosing a good method name. They'll tell you, for example, that method names should start with a verb. Is <kbd>create_membership_from_csv_row</kbd> the right name?
+    </p>
+    <p>
+      Metz's 2017 talk "<a href="https://www.youtube.com/watch?v=mpA2F1In41w">Go ahead, make a mess</a>" caused me to notice a hidden assumption of mine: that I will be writing a class method. In an example very similar to my use case, she chooses an instance method. She tells us our foremost consideration in Object Oriented Design is passing the right message. As the job of our line of code is to create an new instance of a class, an instance method is a very appropriate type of message!
+    </p>
+<pre class="block">
+output_log << Membership.new.save_with_csv_row_data(row)
+</pre>
+    <p>
+      This line shows the name I settled on. I decided that "save" was more descriptive in this case than "create", because in Ruby, "create" suggests the combination of instantiating an object and saving a database record. In my case, the instantiation is handled by <kbd>.new</kbd> and my method does saving only.
+    </p>
+    <p>
+      I've represented <kbd>output_log</kbd> as something that responds to <kbd><<</kbd>. An array, perhaps. I'll continue to assume that in the rest of this post. In reality we might not want to add output for every single line like this. It would depend on the particulars of what we expect from our data, which we are ignoring.
+    </p>
+    <p>
+      I considered creating an object other than a membership to accept the message. Metz encourages this kind of thing in her message-oriented design: "If you find a message, you can just make up an object to receive it." But in this case I feel that an instance of the Membership class really is the most fitting object to which this message could be passed.
+    </p>
+    <h4>Choosing the return value</h4>
+    <p>
+      Having named this method, we would have to actually write it. Before we do, we should decide what the containing <kbd>.input</kbd> method expects of it, and thus what <kbd>.input</kbd> itself will return.
+    </p>
+    <p>
+      We want our users to know what errors spring from what lines of a .csv file. This suggests the use of key-value pairs. Thus, our <kbd>output_log</kbd> could be a hash. But there is a complication: one line of code that handles an error that occurs not on a line of the .csv file, but because of the lack of a file.
+    </p>
+<pre class="block">
+return 0 if file.nil?
+</pre>
+    <p>
+      Thus the data structure we return will need a way to contain not only line numbered errors, but this error, and perhaps others, that arise from the overall import process. A hash isn't so well suited to that.
+    </p>
+    <p>
+      One very simple return would be an array of strings. The indexes of the array could be the line numbers, right? And, the error with a file not found could go....at unused the zero index of the array, I guess? Such an array might have lots of blanks if error-free lines produce no output. And it would restrict us to only one slot, zero, for non-line-specific output. Not very flexible. We could...oh, but should we?...just concatenate all the output into a big string! Even the line numbers! You can cram anything into a string. This might be OK if the output goes directly to human eyes, and we are assured we never have to write automation to pick the string back apart.
+    </p>
+    <p>
+      For an approach with more structure, we could try some "<a href="http://www.virtuouscode.com/2010/05/12/quickie-objects-in-ruby/">quickie objects</a>", starting with an <a href="http://ruby-doc.org/stdlib-2.5.1/libdoc/ostruct/rdoc/OpenStruct.html">OpenStruct</a>. Because it's a little like a hash, and a little like a fly-by-the-seat-of-your-pants object, there are all kind of useful useful attributes we are free to add!
+    </p>
+<pre class="block">
+output_struct = OpenStruct.new
+output_struct.file_uploaded = !file.nil?
+output_struct.memberships_created = Membership.count - initial_membership
+output_struct.memberships_errored = output_log.length
+output_struct.output_by_csv_line = output_log
+
+output_struct.file_uploaded    # => true
+</pre>
+  <p>
+    In a very similar way to an OpenStruct, we could use a plain old object.
+  </p>
+<pre class="block">
+output_object = Object.new
+def output_object.file_uploaded() !file.nil? end
+
+output_object.file_uploaded    # => true
+</pre>
+    <p>
+      We are adding methods to that object right in line, which some people might think is gross. We could define the object in another file. We could even create a class for it. Have we just reinvented service objects? I'm not quite sure; I normally hear that term applied to things abstracted from a controller, not a model.
+    </p>
+    <p>
+      Creating class with a name like <kbd>ImportResult</kbd> might be worthwhile if we want to enforce certain attribute names, rather than add them in the fly-by-the-seat-of-our-pants style used above. Particularly if we anticipate wanting a database table of <kbd>import_results</kbd> in the future. If we don't anticipate those things, however, it seems a pretty heavy-weight solution.
+    </p>
+
+    <h4>Bringing it all together</h4>
+    <p>
+      Having considered various return values, I find I am happiest when I think about the OpenStruct. In my example above, the OpenStruct has an attribute <kbd>output_by_csv_line</kbd> whose value is another data structure containing the line-by-line output. This second structure suggest to me that it should be created by another method.
+    <p>
+      It happens we were planning, paragraphs ago, one final extraction from our <kbd>.input</kbd> method! We were going to divide it into one that iterates over the .csv lines, which turns out to be the sensible place to output line-by-line results, and one that handles the process overall, which would be the sensible place to organize our OpenStruct.
+    </p>
+    <p>
+      Here's how it looks when I put it all together:
+    </p>
+<pre class="block">
+class Membership < ApplicationRecord
+  require 'csv'
+
+  def self.import(file)
+    import_results = OpenStruct.new
+    import_results.file_uploaded = !file.nil?
+    import_results.output_by_csv_line = Membership.parse_csv_and_return_errors(file) unless file.nil?
+    return import_results
+  end
+
+  def self.parse_csv_and_return_errors(file)
+    results_from_lines = []
+    CSV.foreach(file.path) do |row|
+      results_from_lines << Membership.new.save_with_csv_row_data(row)
+    end
+    return results_from_lines
+  end
+
+  def save_with_csv_row_data(row)
+    # ...
+    # Code to create db record from fields in row
+    # ...
+  end
+
+end
+</pre>
+  <p>
+    The <kbd>.import</kbd> method I started with is now three methods. Each does one thing, and each returns a data structure fitting to its role. Except...maybe not the last one. Who knows what's in there? Well, it's some big mess that I'm hiding from you.
+  </p>
+  <p>
+    In her talk, Sandi Metz named a certain type of code mess an "omega mess". An omega mess is a stable mess, with no dependents and no dependencies. It's code at the end of the line. She argues that it's not worth refactoring such code unless we can identify some future cost of doing nothing to it now.
+  </p>
+  <p>
+    I'm not sure that I believe in omega messes. I don't think I've ever encountered lengthy, messy calculations that <em>don't</em> depend on stuff. Maybe in scientific computing there are long passages of code that are pure math with just one input. But that's not my life.
+  </p>
+  <p>
+    I think our mess is stable-ish; it depends on a .csv input file format, and on a certain database table, but not on any other Ruby code. Those things could change in hard-to-predict ways, but there's no additional cost to waiting until we know what those changes are. We'll keep our mess hidden away in that end-of-the-line <kbd>save_with_csv_row_data</kbd> method.
+  </p>
+
+  </article>
+  <hr />
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+
+</body>
+</html>

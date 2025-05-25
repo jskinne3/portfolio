@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>XMLHttpRequest blocked by CORS policy in local HTML document</title>
+  <meta name="description" content="How I fixed this error: The 'Access-Control-Allow-Origin' header has a value 'file://' that is not equal to the supplied origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+
+  <meta property="og:title" content="XMLHttpRequest blocked by CORS policy in local HTML document">
+  <meta property="og:description" content="How I fixed this error: The 'Access-Control-Allow-Origin' header has a value 'file://' that is not equal to the supplied origin.">
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/9/91/JavaScript_screenshot.png">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="XMLHttpRequest blocked by CORS policy in local HTML document">
+  <meta name="twitter:description" content="How I fixed this error: The 'Access-Control-Allow-Origin' header has a value 'file://' that is not equal to the supplied origin">
+  <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/9/91/JavaScript_screenshot.png">
+  
+  <link rel="icon" href="https://johnskinnerportfolio.com/favicon.ico">
+  <link rel="shortcut icon" href="https://johnskinnerportfolio.com/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+</head>
+<body>
+
+  <h1><a class="invisilink" href="http://johnskinnerportfolio.com/">John Skiles Skinner's portfolio</a></h1>
+
+  <article>
+    <div class="darkband">
+      <h2>XMLHttpRequest blocked by CORS policy in local HTML document</h2>
+      <p>
+        My simple fix for this error: Access to XMLHttpRequest at 'https://example.com/api/endpoint?format=raw' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'file://' that is not equal to the supplied origin.
+      </p>
+      <time class="block">22 July 2022</time>
+    </div>      
+    <p>
+      Recently while building a proof-of-concept for a snippet of JavaScript that was provided by a software vendor I encountered this CORS error.
+    </p>
+    <code class="block">
+      Access to XMLHttpRequest at 'https://example.com/api/endpoint?format=raw' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'file://' that is not equal to the supplied origin.
+    </code>
+    <p>
+      I habitually write HTML documents in a local text file, viewing them by dragging the file icon into my web browser window. This displays the webpage without any web server. In this case, the webpage contained a request for an external script that evidently violates the browser's same-origin policy. I think the reason for this is that file:// is not the expected protocol scheme.
+    </p>
+    <figure>
+      <img class="shadow block" src="/img/access_from_origin_null_has_been_blocked.png" alt="An error message reading: Access to XMLHttpRequest at 'https://example.com/api/endpoint?format=raw' from origin 'null' has been blocked by CORS policy: The 'Access-Control-Allow-Origin' header has a value 'file://' that is not equal to the supplied origin." />
+      <figcaption class="block">An example of the error message in Chrome browser's developer tools</figcaption>
+    </figure>
+    <p>
+      I spent a while investigating how to set the Access-Control-Allow-Origin for a local file. Without a web server, just opening HTML documents locally, it is tricky to convince the browser that a web server is setting a header. There is a Chrome plugin (which I didn't try) that claims to do this, the <a href="https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc?hl=en-US">Moesif Origin & CORS Changer</a>.
+    <p>
+      The fastest solution for me was to run a local web server. I didn't want to install anything new, but because I have Python installed, I already had a web server. I ran this command from the directory with my HTML document:
+    </p>
+    <code class="block">
+      python3 -m http.server
+    </code>
+    <p>
+      Then I visited <a href="http://localhost:8000/">http://localhost:8000/</a> and was able to view the files in the directory. Clicking on my HTML file, the page displayed free of CORS errors, and the JS snippet executed.
+    </p>
+    <p>
+      If you don't have Python, you can <a href="https://realpython.com/installing-python/">learn how to install it here</a>.
+    </p>
+
+  </article>
+  <hr>
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+
+</body></html>
+

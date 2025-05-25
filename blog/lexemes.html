@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Wikidata words</title>
+  <meta name="description" content="What are Wikidata lexemes and what can we use them for?">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+
+  <meta property="og:title" content="Wikidata words">
+  <meta property="og:description" content="What are Wikidata lexemes and what can we use them for? They let software reason about words!">
+  <meta property="og:image" content="https://johnskinnerportfolio.com/blog/img/dictionary.jpg">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Wikidata words">
+  <meta name="twitter:description" content="What are Wikidata lexemes and what can we use them for? They let software reason about words!">
+  <meta name="twitter:image" content="https://johnskinnerportfolio.com/blog/img/dictionary.jpg">
+  
+  <link rel="icon" href="https://johnskinnerportfolio.com/favicon.ico">
+  <link rel="shortcut icon" href="https://johnskinnerportfolio.com/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+</head>
+<body>
+
+  <h1><a class="invisilink" href="http://johnskinnerportfolio.com/">John Skiles Skinner's portfolio</a></h1>
+
+  <article>
+    <div class="darkband">
+      <div class="articleillushead">
+        <div>
+          <img class="headillus" src="/img/dictionary.jpg" alt="A photograph of books on a shelf">
+        </div>
+        <div>
+          <h2>Wikidata words</h2>
+          <p>
+            What are Wikidata lexemes? What can we use them for? They let software reason about words! In this blog post, we use the lexeme data model to find synonyms.
+          </p>
+          <time class="block">30 January 2020</time>
+        </div>
+      </div>
+    </div>
+    <p>
+      Wikidata is an ambitious database. It wants to hold all the knowledge in the world. This includes <a href="https://en.wikibooks.org/wiki/SPARQL/WIKIDATA_Lexicographical_data">lexicographical data</a> &mdash; knowledge about words. They are described with the <a href="https://www.mediawiki.org/wiki/Extension:WikibaseLexeme/Data_Model">lexeme data model</a>:
+    </p>
+    <dl class="block">
+      <dt>Lexeme</dt>
+      <dd>A word, including its variations. In English, <em>belong</em>, <em>belongs</em>, and <em>belonged</em> are forms of the same lexeme. Wikidata also includes short phrases and word parts, like prefixes, as lexemes.</dd>
+      <dt>Sense</dt>
+      <dd>A meaning of a word. The noun <em>film</em> has two senses: a motion picture and a thin membrane</dd>
+      <dt>Lemma</dt>
+      <dd>One of the variations of a lexeme chosen as the standard. A few lexemes, like <a href="https://www.wikidata.org/wiki/Lexeme:L1347">color/colour</a> have more than one lemma because they have more than one standard spelling. But, most have only one.</dd>
+    </dl>
+    <p>Like everything in Wikidata, lexemes, senses, and lemmas are stored as semantic triples. Triples are a convention for storing data, associated with <a href="https://www.wikidata.org/wiki/Wikidata:RDF">RDF</a> and <a href="https://medium.com/virtuoso-blog/what-is-the-linked-open-data-cloud-and-why-is-it-important-1901a7cb7b1f">Linked Open Data</a>.
+    <p>Let's demonstrate these parts of the data model with some SPARQL queries, the query language of Wikidata, at the <a href="https://query.wikidata.org/">query.wikidata.org</a> query interface.</p>
+    <figure>
+      <img class="shadow block" src="/img/bluebookshelf.jpg" alt="A photograph of many books on a shelf that are similar in color" />
+      <figcaption class="block">A bookshelf near my desk at <a href="https://mannlib.cornell.edu/">Mann Library</a>, Cornell University</figcaption>
+    </figure>
+    <h4>Let's see some lexemes</h4>
+    <p>
+      This simple SPARQL query, which you can run at <a href="https://w.wiki/GTb">query.wikidata.org</a>, will find all the lexemes in Wikidata:
+    </p>
+<pre class="block"><code><span class="com"># select all lexemes</span>
+SELECT ?lexeme ?lemma WHERE {
+  ?lexeme wikibase:lemma ?lemma . <span class="com"># show a lemma for each lexeme</span>
+}
+</code></pre>
+    <p>
+      After running it, you'll see the output is a long table of random-seeming words in many languages. Each word is a lemma. Next to every word is a link. The link indicates the lexeme to which the lemma belongs.
+    </p>
+    <p>
+      This table of lexemes is less than 300k words as of this writing. This is a lot less than the number of all words in every spoken language &mdash; every estimate I can find puts this at many millions &mdash; so Wikidata lexemes are clearly a work in progress. I wonder how many words it lists in English?
+    </p>
+<pre class="block"><code><span class="com"># select all lexemes in English</span>
+SELECT ?lexeme ?lemma WHERE {
+  ?lexeme &lt;http://purl.org/dc/terms/language&gt; wd:Q1860;
+  wikibase:lemma ?lemma .
+}
+</code></pre>
+    <p>
+      The code <samp>wd:Q1860</samp> is a Wikidata <a href="https://www.wikidata.org/wiki/Wikidata:Identifiers">item identifier</a> for the English language. We use it to restrict our query. At the moment of this writing, we find 38,268 English lexemes.
+    </p>
+    <hr class="block">
+    <h4>Let's find a particular lexeme by its lemma</h4>
+    <p>
+      Instead of massive tables of words, how do we pluck out a specific word? Can we search Wikidata for a string?
+    </p>
+<pre class="block"><code><span class="com"># find the word <em>film</em> in English</span>
+SELECT ?lexeme ?lemma WHERE {
+  VALUES ?lemma {'film'@en}       <span class="com"># Restrict search to English "film" lemmas</span>
+  ?lexeme wikibase:lemma ?lemma . <span class="com"># Find the corresponding lexemes</span>
+}
+</code></pre>
+    <p>
+      Here we are specifying the English language by the <samp>@en</samp> applied to the string <samp>'film'</samp>. The result (as of this writing) are two lexemes: the noun form of <em>film</em>, and the verb form.
+    </p>
+    <p>
+      Let's look at a way we can apply this knowledge!
+    </p>
+
+    <figure>
+      <img class="shadow block" src="/img/jumbleshelf.jpg" alt="A photograph of many books on a shelf at odd angles" />
+      <figcaption class="block">Another, rather less orderly bookshelf at Mann Library...toward the back somewhere</figcaption>
+    </figure>
+
+    <h4>Find synonyms of a word</h4>
+    <p>
+      Below is a SPARQL query that finds synonyms for a word. It traverses from lemmas to their lexemes, as we've already seen. Then it grabs the senses of those lexemes &mdash; the meanings of the words. It uses the <samp>wdt:P5973</samp> synonym property to look for words with the similar meanings.
+    </p>
+    <p>
+      Once it has discovered some synonyms, it re-traces its steps. It walks back from those synonym's senses, to their lexemes, to their lemmas. In the end, it tells us that "movie" and "motion picture" are synonyms for "film".
+    </p>
+<pre class="block"><code><span class="com"># Find synonyms for "film":</span>
+SELECT * {
+  VALUES ?lemma1 {'film'@en}
+  ?lexeme1 wikibase:lemma ?lemma1 . <span class="com"># get lexemes that share the lemma "film" (resulting in the noun and verb form of the word)</span>
+  ?lexeme1 ontolex:sense ?sense1 .  <span class="com"># get senses for each lexeme (resulting in <em>movie</em> and <em>membrane</em> senses of the noun <em>film</em>)</span>
+  ?sense1 wdt:P5973 ?sense2 .       <span class="com"># get synonymous senses belonging to other lexemes (resulting in a sense of the lexeme <em>motion picture</em>)</span>
+  ?lexeme2 wikibase:lemma ?lemma2 . <span class="com"># then, from all lemmas belonging to any lexeme</span>
+  ?lexeme2 ontolex:sense ?sense2 .  <span class="com"># get those that have senses we've found to be synonymous with <em>film</em></span>
+}
+</code></pre>
+  <p>
+    As we've already noted, there is more than one sense of the noun <em>film</em>. It can designate a movie, but also a thin membrane. As of now, only movie-related lexemes are returned by this SPARQL query.
+  </p>
+  <p>
+    This is because synonym data in Wikidata is currently not very complete. The <em>membrane</em> sense of <em>film</em> is in the data. But, it has no synonym assertions, so other membrane-related lexemes were not found. Maybe some day!
+  </p>
+  <h4>Thanks are in order</h4>
+  <p>
+    <a href="https://www.linkedin.com/in/skralin/">Stanislav Kralin</a>, <a href="https://www.cornell.edu/search/people.cfm?netid=hjk54">Huda Khan</a>, and <a href="https://library.stanford.edu/people/thorsenh">Hilary Thorsen</a> were essential to this writing!
+  </p>
+
+  </article>
+  <hr>
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+
+</body></html>
+

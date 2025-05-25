@@ -1,0 +1,175 @@
+
+
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Replacing setTimeout with promises</title>
+  <meta name="description" content="Using JavaScript .wait.apply() to await multiple API calls">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+
+  <meta property="og:title" content="Replacing setTimeout with promises">
+  <meta property="og:description" content="Using JavaScript .wait.apply() to await multiple API calls">
+  <meta property="og:image" content="http://johnskinnerportfolio.com/blog/img/short_period.jpg">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Replacing setTimeout with promises">
+  <meta name="twitter:description" content="Using JavaScript .wait.apply() to await multiple API calls">
+  <meta name="twitter:image" content="http://johnskinnerportfolio.com/blog/img/short_period.jpg">
+  
+  <link rel="icon" href="http://johnskinnerportfolio.com/favicon.ico">
+  <link rel="shortcut icon" href="http://johnskinnerportfolio.com/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+</head>
+<body>
+
+  <h1><a class="invisilink" href="http://johnskinnerportfolio.com/">John Skiles Skinner's portfolio</a></h1>
+
+  <article>
+    <div class="darkband">
+      <div class="articleillushead">
+        <div>
+          <img class="headillus" src="/img/short_period.jpg" alt="A picture of colorful television static">
+        </div>
+        <div>
+          <h2>JS promises for faster code</h2>
+          <p>
+            In which I use jQuery .when.apply() to process the result of multiple API calls, and make code faster by avoiding setTimeout()
+          </p>
+          <time class="block">3 October 2019</time>
+        </div>
+      </div>
+    </div>
+
+    <p><em>Note:</em> code used below accomplishes things with jQuery that <a href="https://www.youtube.com/watch?v=SyL1thdXmlE">can also be done with ES6</a> if you are programming in an environment where you may assume your users' browsers are up to date enough to support the latest JavaScript.</p>
+
+    <h4>The transformation</h4>
+    <p>
+      I am pretty proud of a function I refactored recently for my job at Cornell University Library. The <a href="https://github.com/LD4P/discovery/pull/54/files">diff can be found on GitHub</a>, but just have a glance at how much the code changed:
+    </p>
+    <figure class="block flexfigure">
+      <div>
+        <img src="/img/before_code.png" />
+      </div>
+      <div style="text-align: center; padding: 2vw;" class="arrow">
+        refactor
+        <br>
+      </div>
+      <div>
+        <img src="/img/after_code.png" />
+      </div>
+    </figure>
+    <p>
+      This large reduction in number of lines of code was driven by re-thinking the technique for making multiple API requests.
+    </p>
+
+    <h4>Should we wait for requests to finish?</h4>
+    <p>
+      The function makes calls to three APIs, it does some processing of the results of the API calls, and then it passes the results to the next function. The processing of those API requests can't simply be coded in line after the API calls, because JavaScript will run the processing before the API calls are completed! Something must be done to ensure these things run in the right order.
+    </p>
+    <p>
+      The code (before refactoring) used the <code>success</code> and <code>complete</code> methods to sequence the processing after the API calls. Then, to pass control flow to the next function, it waited with the <code>setTimeout()</code> method. So, the code simply waited for a fixed time that, in the judgement of the developer, is probably long enough that most or all of the API calls have finished.
+    </p>
+    <p>
+      There is a big problem with this approach: the time waited might be wrong. If the time is too short, the API calls won't be complete when the code attempts to process them. If the time is too long, the code will be wastefully idle while the API calls have already finished. It would be nice to process the results when, and only when, they are actually ready!
+    </p>
+
+    <h4>Why not use callbacks?</h4>
+    <p>
+      Maybe the code could sequence things using a callback? After all, the <code>success</code> and <code>complete</code> methods are a kind of callback, right? Can't we just pass control flow to the next function by the same technique?
+    </p>
+    <p>
+      That would work if there were only one API call, but there are three. Whichever one passes the callback may not be the last one to execute. We need to <em>wait for all of them</em>.
+    </p>
+
+    <h4>Promises, promises</h4>
+    <p>
+      We can use promises to sequence our code. jQuery provides a tricky way to await not just one promise, but an indefinite number of them. It looks like <samp>$.when.apply($, ...)</samp> followed by <samp>.done( ... )</samp>.
+    </p>
+    <p>
+      The trick works because:
+    </p>
+    <ul class="block">
+      <li><code>$.when</code> takes any number of promises as parameters and resolves when all the promises have resolved</li>
+      <li><code>.apply()</code> converts an array of promises to parameters</li>
+      <li><code>.done()</code> is a callback function; the code within it is deferred until <code>$.when</code> resolves
+    </ul>
+    <p>
+      The below code shows how I used this technique:
+    </p>
+
+    <kbd class="block">
+      function ajaxRequestsForSuggestedSearches(q) {<br>
+      <span class="ind">
+        var ajaxParametersList = [<br>
+        <span class="ind">
+          {<br>
+          <span class="ind">
+            url: 'https://lookup.ld4l.org/authorities/search/...',<br>
+            dataType: 'json'<br>
+          </span>
+          },<br>
+          {<br>
+          <span class="ind">
+            url: 'http://lookup.dbpedia.org/api/search/...',<br>
+            dataType: 'json'<br>
+          </span>
+          },<br>
+          {<br>
+          <span class="ind">
+            url: 'https://www.wikidata.org/w/api.php?action=...',<br>
+            dataType: 'jsonp'<br>
+          </span>
+          }<br>
+        </span>
+        ];<br>
+        <span class="com">// return an array of Ajax promises</span><br>
+        return ajaxParametersList.map(p => $.ajax(p));<br>
+      </span>
+      }<br>
+      <br>
+      function gatherSuggestions(q) {<br>
+      <span class="ind">
+        <span class="com">// get array of Ajax request promises</span><br>
+        var ajaxRequests = ajaxRequestsForSuggestedSearches(q);<br>
+        <span class="com">// run each request in the array</span><br>
+        var whenRequests = $.when.apply($, ajaxRequests);<br>
+        <span class="com">// when done running, process responses</span><br>
+        whenRequests.done(function(ld4l, dbpedia, wikidata){<br>
+        <span class="ind">
+          <br><span class="com">// ... do stuff to process request results ...</span><br><br>
+
+          <span class="com">// pass the output of processing on to next function</span><br>
+          checkSuggestions(processedData);<br>
+        </span>
+        })<br>
+      </span>
+      }<br>
+    </kbd>
+
+    <p>
+      The first function in the above code starts with an array of info that will be used for network connections. The last line of that first function sets up an <code>$.ajax()</code> promise for each connection.
+    </p>
+    <p>
+      The second function in the code takes that array of promises and uses <code>$.when</code> to prepare to do further work when each promise is resolved. The method <code>.done()</code> is used to specify that further work.
+    </p>
+    <p>
+      I think it is bad/weird to put large chunks of code inside the level of indentation that <code>.done()</code> causes, so my program's control flow passes pretty quickly to another function (named <code>checkSuggestions()</code> in this case).
+    </p>
+    <p>
+      But, that's not the only reason to break your code into functions of manageable size! <a href="http://johnskinnerportfolio.com/blog/many_happy_returns.html">I've written more about that here</a>
+    </p>
+    <hr>
+    <p>
+      <em>Random note:</em> I experimented with processing the requests with the <code>dataFilter</code> option built in to <code>&.ajax()</code>, instead of processing them within <code>done</code>.
+    </p>
+    <p>
+      It turns out that <code>dataFilter</code> does not work for JSONP requests! Thanks to <a href="https://www.worldcat.org/title/javascript-the-definitive-guide/oclc/842839054">David Flanagan's JavaScript</a> book for that insight!
+    </p>
+    
+  </article>
+  <hr>
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+  
+</body></html>

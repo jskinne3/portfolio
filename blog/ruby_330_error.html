@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>OpenSSL error installing Ruby</title>
+  <meta name="description" content="Error running '__rvm_make -jx'; You must either tell Ruby where to find OpenSSL or downgrade to a version it can find.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+
+  <meta property="og:title" content="OpenSSL error installing Ruby">
+  <meta property="og:description" content="Error running '__rvm_make -jx'; You must either tell Ruby where to find OpenSSL or downgrade to a version it can find.">
+  <meta property="og:image" content="img/static.jpg">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="OpenSSL error installing Ruby">
+  <meta name="twitter:description" content="Error running '__rvm_make -jx'; You must either tell Ruby where to find OpenSSL or downgrade to a version it can find.">
+  <meta name="twitter:image" content="img/static.jpg">
+  
+  <link rel="icon" href="https://johnskinnerportfolio.com/favicon.ico">
+  <link rel="shortcut icon" href="https://johnskinnerportfolio.com/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+  <style>
+    td {
+      border: 1px solid;
+    }
+  </style>
+</head>
+<body>
+
+  <h1><a class="invisilink" href="http://johnskinnerportfolio.com/">John Skiles Skinner</a></h1>
+  <p>
+    No ads | No trackers | Just blog
+  </p>
+
+  <article>
+
+    <div class="darkband">
+      <div class="articleillushead">
+        <div>
+          <img class="headillus" src="/img/static.jpg" alt="Colorful television static" />
+        </div>
+        <div>
+          <h2>OpenSSL error installing Ruby</h2>
+          <p>
+            There's a big mess in the Ruby world right now: Ruby can't find its OpenSSL dependency. <a href="#the-best-solution">The solution</a> consists of telling Ruby where to find OpenSSL. If that fails, downgrade to a version it can find.
+          </p>
+          <time class="block">19 January 2024</time>
+          <div class="block" style="font-size: smaller; margin-left: 4vw;">Updated 17 January 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="contents">Contents</h3>
+    <ul class="block">
+      <li><a href="#the-problem">Scope of the problem</a></li>
+      <li><a href="#error-messages">Error messages</a></li>
+      <li><a href="#the-best-solution">The best solution</a></li>
+      <li><a href="#older-versions">Older versions, a less-good solution</a></li>
+      <li><a href="#further-reading">Further reading and credit</a></li>
+    </ul>
+
+    <h3 id="the-problem">Scope of the problem</h3>
+    <p>
+      I am having a persistent problem installing Ruby. It is OpenSSL problem, one that <em>a lot</em> of other people in the Ruby community also seem to be banging their heads against. The Ruby installer apparently cannot find its OpenSSL dependency or (<a href="https://github.com/ruby/openssl/issues/592#issuecomment-2000729786">my theory</a>) it gets jammed between two different versions of OpenSSL. Some users have recoursed to downgrading to old, potentially unsafe versions of OpenSSL. Lots of software development is blocked and insecure code is running. This situation is a mess.
+    </p>
+    <p>
+      At minimum, this is scope of the problem:
+    </p>
+    <ul class="block">
+      <li>It impacts people who install Ruby with <samp>rbenv</samp>, <samp>rvm</samp>, or <samp>chruby</samp>, and apparently people who build Ruby from source.</li>
+      <li>It impacts Macs with any chips: M1, M2, M3 or Intel. (MacOS and maybe Ubuntu?)</li>
+      <li>It happens to people who install OpenSSL with both Homebrew and MacPorts.</li>
+      <li>It happens with <strong>most or all versions of Ruby!</strong> The problem seems to crop up for people who at some point install Ruby 3.1 and above. But, after that, it can mess up your ability to install lower versions on the same computer.</li>
+    </ul>
+    <p>
+      It looks like this problem has been exploding in frequency since Christmas of 2021, when Ruby 3.1 was released. At that time, the language added support for OpenSSL version 3 <a href="https://www.ruby-lang.org/en/news/2021/12/25/ruby-3-1-0-released/">to Ruby's standard library</a>. This is great news for security reasons, but it adds a hitch to installation for many users. Your system either loses track of the installed OpenSSL or <a href="https://github.com/rvm/rvm/issues/5365#issuecomment-1624435349">can get jammed between OpenSSL versions</a> with some parts pointing to version 1 and some to version 3 of OpenSSL. The result can be that you are no longer able to install <strong>any</strong> version of Ruby.
+    </p>
+
+    <h3 id="error-messages">Error messages</h3>
+    <p>
+      I first noticed the problem when running the <samp>rvm install 3.3.0</samp> command. The command outputs this, asking you to open a log file:
+    </p>
+    <pre class="block"><code>Error running '__rvm_make -j8',
+please read /Users/johnsskinner/.rvm/log/1705608818_ruby-3.3.0/make.log
+
+There has been an error while running make. Halting the installation.
+</code></pre>
+    <p>
+      The problem often presents itself with variations on this error message, such as <code>Error running '__rvm_make -j10'</code> or <code>Error running '__rvm_make -j16'</code>. The "j" flag followed by a number stands for "jobs." I think the number of jobs is determined by the number of cores in your processor.
+    </p>
+    <p>
+      I recommend opening this log file in a text editor. Search the log for the string <code>error</code> and you'll find the errors are rather obscure (and vary depending on the situation). Now search for the string <code>openssl@</code> &mdash; if you see references to a mix of different version numbers after the @ sign, your machine is stuck between OpenSSL versions. It is confused!
+    </p>
+    <figure>
+      <img class="shadow block" src="/img/logs_side_by_side.jpg" alt="Two laptops showing visibly different log files" />
+      <figcaption class="block">Hardware testing: log file error output differs on a 2022 MacBook Air M2 (left) vs. a 2019 MacBook Pro Intel (right) both installing the latest Ruby on the same OS version.</figcaption>
+    </figure>
+    <p>
+      The errors in the log file typically point to trouble running these C files, which are a part of <a href="https://github.com/ruby/openssl">OpenSSL for Ruby</a>, Ruby's wrapper for the <a href="https://github.com/openssl/openssl">shared OpenSSL library</a>:
+    </p>
+    <ul class="block">
+      <li>openssl_missing.h</li>
+      <li>ossl.c</li>
+      <li>ossl_pkey_rsa.o</li>
+      <li>ossl_hmac.o</li>
+    </ul>
+    <p>
+      An example line in the log file that indicates the problem:
+    </p>
+    <pre class="block"><code>make[2]: *** [ossl_hmac.o] Error 1</code></pre>
+    <details class="block">
+      <summary>Click to expand a longer example from the log file</summary>
+      <pre class="block"><code>
+In file included from ossl_config.c:10:
+In file included from ./ossl.h:177:
+./openssl_missing.h:195:11: warning: 'TS_VERIFY_CTS_set_certs' macro redefined [-Wmacro-redefined]
+#  define TS_VERIFY_CTS_set_certs(ctx, crts) ((ctx)->certs=(crts))
+          ^
+/usr/local/Cellar/openssl@3/3.2.1/include/openssl/ts.h:426:11: note: previous definition is here
+#  define TS_VERIFY_CTS_set_certs(ctx, cert) TS_VERIFY_CTX_set_certs(ctx,cert)
+          ^
+linking shared-object readline.bundle
+In file included from ossl_digest.c:10:
+In file included from ./ossl.h:177:
+./openssl_missing.h:195:11: warning: 'TS_VERIFY_CTS_set_certs' macro redefined [-Wmacro-redefined]
+#  define TS_VERIFY_CTS_set_certs(ctx, crts) ((ctx)->certs=(crts))
+          ^
+/usr/local/Cellar/openssl@3/3.2.1/include/openssl/ts.h:426:11: note: previous definition is here
+#  define TS_VERIFY_CTS_set_certs(ctx, cert) TS_VERIFY_CTX_set_certs(ctx,cert)
+          ^
+linking shared-object nkf.bundle
+In file included from ossl_engine.c:10:
+In file included from ./ossl.h:177:
+./openssl_missing.h:195:11: warning: 'TS_VERIFY_CTS_set_certs' macro redefined [-Wmacro-redefined]
+#  define TS_VERIFY_CTS_set_certs(ctx, crts) ((ctx)->certs=(crts))
+          ^
+/usr/local/Cellar/openssl@3/3.2.1/include/openssl/ts.h:426:11: note: previous definition is here
+#  define TS_VERIFY_CTS_set_certs(ctx, cert) TS_VERIFY_CTX_set_certs(ctx,cert)
+          ^
+1 warning generated.
+compiling constants.c
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+1 warning generated.
+1 warning generated.
+compiling strscan.c
+compiling ossl_hmac.c
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+compiling basicsocket.c
+checking ../.././parse.y and ../.././ext/ripper/eventids2.c
+compiling ossl_kdf.c
+compiling syslog.c
+ripper.c:10310:9: warning: variable 'yynerrs' set but not used [-Wunused-but-set-variable]
+    int yynerrs = 0;
+        ^
+In file included from ossl_hmac.c:10:
+In file included from ./ossl.h:177:
+./openssl_missing.h:195:11: warning: 'TS_VERIFY_CTS_set_certs' macro redefined [-Wmacro-redefined]
+#  define TS_VERIFY_CTS_set_certs(ctx, crts) ((ctx)->certs=(crts))
+          ^
+/usr/local/Cellar/openssl@3/3.2.1/include/openssl/ts.h:426:11: note: previous definition is here
+#  define TS_VERIFY_CTS_set_certs(ctx, cert) TS_VERIFY_CTX_set_certs(ctx,cert)
+          ^
+ossl_hmac.c:249:35: error: incomplete definition of type 'struct evp_md_ctx_st'
+    pkey = EVP_PKEY_CTX_get0_pkey(EVP_MD_CTX_get_pkey_ctx(ctx));
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./openssl_missing.h:230:41: note: expanded from macro 'EVP_MD_CTX_get_pkey_ctx'
+#  define EVP_MD_CTX_get_pkey_ctx(x) (x)->pctx
+                                      ~~~^
+/usr/local/Cellar/openssl@3/3.2.1/include/openssl/types.h:107:16: note: forward declaration of 'struct evp_md_ctx_st'
+typedef struct evp_md_ctx_st EVP_MD_CTX;
+                ^
+1 warning and 1 error generated.
+make[2]: *** [ossl_hmac.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+compiling socket.c
+installing default ripper libraries
+In file included from ossl_kdf.c:5:
+In file included from ./ossl.h:177:
+./openssl_missing.h:195:11: warning: 'TS_VERIFY_CTS_set_certs' macro redefined [-Wmacro-redefined]
+#  define TS_VERIFY_CTS_set_certs(ctx, crts) ((ctx)->certs=(crts))
+          ^
+/usr/local/Cellar/openssl@3/3.2.1/include/openssl/ts.h:426:11: note: previous definition is here
+#  define TS_VERIFY_CTS_set_certs(ctx, cert) TS_VERIFY_CTX_set_certs(ctx,cert)
+          ^
+compiling zlib.c
+1 warning generated.
+make[1]: *** [ext/openssl/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+compiling ipsocket.c
+linking shared-object syslog.bundle
+linking shared-object strscan.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+installing default syslog libraries
+linking shared-object stringio.bundle
+compiling tcpsocket.c
+compiling tcpserver.c
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+compiling sockssocket.c
+compiling udpsocket.c
+compiling unixsocket.c
+compiling unixserver.c
+compiling option.c
+compiling ancdata.c
+compiling raddrinfo.c
+compiling ifaddr.c
+installing default socket libraries
+linking shared-object zlib.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+linking shared-object socket.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+1 warning generated.
+linking shared-object ripper.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.2'
+make: *** [build-ext] Error 2
++__rvm_make:0> return 2
+      </code></pre>
+    </details>
+    <p>
+      While investigating this problem, I tried installing various versions of Ruby. Back in version 2 the error message (for apparently the same problem) was somewhat more clear:
+    </p>
+    <pre class="block"><code>kernel_require.rb:83:in `require': cannot load such file -- openssl (LoadError)</code></pre>
+    <p>
+      A search for the Ruby version 2 error message reveals that <a href="https://stackoverflow.com/questions/14845481/cannot-load-such-file-openssl-loaderror">people have been having some variety of this problem for more than a decade.</a>
+    </p>
+    <h3 id="the-best-solution">The best solution</h3>
+    <p>
+      The ideal is to use version 3 of OpenSSL. Version 1 is deprecated, and version 2 <a href="https://www.openssl.org/blog/blog/2018/11/28/version/index.html">never existed</a>! To use this up-to-date version of OpenSSL, you must be installing Ruby version 3.1 or higher. This is because Ruby versions 3.0 and before require older versions of OpenSSL. (I talk about these older versions <a href="#older-versions">in the next section</a>.)
+    </p>
+    <p>
+      As a Homebrew user, I use the below command to install the latest OpenSSL:
+    </p>
+    <pre class="block"><code>brew install openssl@3</code></pre>
+    <p>
+      Now OpenSSL version 3 has been installed <em>somewhere</em>. But Ruby does not know where. Or more accurately, it is Ruby's wrapper for OpenSSL which does not know. The wrapper <a href="https://github.com/ruby/openssl/?tab=readme-ov-file#installation">requires the user</a> to specify where "in some cases." If you are seeing this problem, you are one of these cases.
+    </p>
+    <p>
+      You will need to get this installation location from Homebrew and pass it along to the Ruby wrapper. <em>How</em> you do that varies a little depending on what software you use to manage Ruby versions:
+    </p>
+    <p>
+      As an RVM user, I use the command:
+    </p>
+    <pre class="block"><code>rvm install 3.3.0 --with-openssl-dir=$(brew --prefix openssl@3)</code></pre>
+    <p>
+      Those who use <samp>rbenv</samp> to manage their Ruby versions would instead run:
+    </p>
+    <pre class="block"><code>RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)" rbenv install 3.3.0</code></pre>
+    <p>
+      Fill in the Ruby version number you are trying to install. But remember, <strong>this only works for <u>Ruby 3.1 or higher</u></strong>. Refer to the <a href="#older-versions">Older Versions</a> section if you must use a version of Ruby older than 3.1.
+    </p>
+    <p>
+      After you do this, you <em>might</em> have a working version of Ruby. You can verify the installation of Ruby by listing the versions you now have installed using <samp>rvm list</samp> or <samp>rbenv versions</samp>.
+    </p>
+    <p>
+      On the other hand, maybe the above won't work for you! After all, Ruby's OpenSSL gem has <a href="https://github.com/ruby/openssl/issues/592">a bug report open right now</a> in which the <code>--with-openssl-dir</code> option just doesn't work correctly in some cases. Computers are hard, who knows. A fallback option is to try an older version of the OpenSSL library:
+    </p>
+    <h3 id="older-versions">Older versions, a less-good solution</h3>
+    <p>
+      If the above "best solution" does not work for you, there are other, sketchier possibilities. They involve tinkering with Ruby and OpenSSL versions. This table illuminates what is possible:
+    </p>
+    <table class="block" style="border-collapse: collapse;">
+      <tr>
+        <th>Ruby version</th>
+        <th>Maximum OpenSSL version</th>
+      </tr>
+      <tr>
+        <td style="padding: 15px;">Ruby 3.1 and newer</td>
+        <td style="padding: 15px;">OpenSSL 3.0 (currently the newest)</td>
+      </tr>
+      <tr>
+        <td style="padding: 15px;">Ruby 2.4 to 3.0</td>
+        <td style="padding: 15px;"><a href="https://github.com/postmodern/ruby-install/commit/a37e332e055da91db5fb053a3d94ebb0f219043d">OpenSSL up to 1.1</a></td>
+      </tr>
+      <tr>
+        <td style="padding: 15px;">Ruby 2.3 and older</td>
+        <td style="padding: 15px;"><a href="https://github.com/rbenv/homebrew-tap/issues/9#issuecomment-1961550017">OpenSSL up to 1.0</a> (scary old)</td>
+      </tr>
+    </table>
+    <p>
+      Ideally you should use the most up-to-date version of OpenSSL supported by your version of Ruby, as listed in the table. Yet, some people appear to be having luck resolving their Ruby installation error by downgrading their OpenSSL version below the newest that is officially supported by their Ruby version. In practice, this <strong>probably means downgrading to version 1.1</strong> of OpenSSL. Remember, version 2 never existed. And version 1.0 is "scary old" as you can see in the table.
+    </p>
+    <p>
+      <span style="color: darkgoldenrod;">&#9888; <em>Warning:</em></span> There is some advice going around (<a href="https://github.com/rbenv/homebrew-tap/issues/9">on this Homebrew GitHub thread for example</a>) that the solution to this error is to downgrade your OpenSSL to version 1.0, an ancient (2010) version which is no longer supported. This is probably a <strong>bad idea</strong> unless you must install an old version of Ruby (2.3 or earlier) which requires it. OpenSSL version 1.0 <a href="https://www.openssl.org/news/vulnerabilities-1.0.0.html">has not been getting security updates since 2015</a> and OpenSSL version 1.1 <a href="https://www.openssl.org/blog/blog/2023/03/28/1.1.1-EOL/">stopped getting security updates as of late 2023</a>. Using either of these is risky!
+    </p>
+    <p>
+      In fact, <code>openssl@1.1</code> is so old and insecure that Homebrew <a href="https://formulae.brew.sh/formula/openssl@1.1">wisely stopped supporting</a> this outdated version. So, if you are a homebrew user and you want to follow the below steps, you will have to circumvent this limit. Obviously, you would be playing a dangerous game. You may go to SSL jail.
+    </p>
+    <p>
+      Run this installation command to verify that the old OpenSSL version "has been disabled because it is not supported upstream":
+    </p>
+    <pre class="block"><code>brew install openssl@1.1</code></pre>
+    <p>
+      If you're sure you really wanna do this, circumvent the disabled status by editing Ruby a file:
+    </p>
+    <pre class="block"><code>brew edit openssl@1.1</code></pre>
+    <p>
+      This should open the file <code>openssl@1.1.rb</code> in your system's text editor. Comment out any line in this file that starts with <code>disable!</code> or <code>deprecate!</code>. The resulting file will contain something like this:
+    </p>
+    <pre class="block"><code># disable! date: "2024-10-24", because: :unsupported</code></pre>
+    <p>
+      Now that you have sabotaged the file, complete your crime by running:
+    </p>
+    <pre class="block"><code>HOMEBREW_NO_INSTALL_FROM_API=1 brew install openssl@1.1</code></pre>
+    <p>
+      You might have to re-run the above steps a few times: maybe once to get the local file, then another time after you've commented out the disable line. You might have to try <code>reinstall</code> in addition to <code>install</code> in the above command.
+    </p>
+    <p>
+      OK, now that you have sinfully installed an old version of OpenSSL, there is another trick. Skipping this is where people get tangled up in this problem for a long time:
+    </p>
+    <ol class="block">
+      <li>If you <strong>have ever installed OpenSSL version 3</strong> (as in the "best solution" section above)</li>
+      <li>or, if you <strong>have ever installed Ruby 3.1 or higher</strong> on your computer</li>
+    </ol>
+    <p>then you must unlink OpenSSL version 3 and link up the downgraded version.</p>
+    <pre class="block"><code>brew unlink openssl@3<br>brew link openssl@1.1</code></pre>
+    <p>
+      Don't skip the unlinking and linking. Things can get confusingly tangled if you skip the step.
+    </p>
+    <p>
+      If the step fails, <a href="https://github.com/postmodern/ruby-install/issues/473">you might have to remove bits of the OpenSSL version 3 configuration</a>. Or, you might have to add the <code>--force</code> option to the above link and/or unlink commands.
+    </p>
+    <p>
+      Finally, use RVM or rbenv to install your Ruby version as you usually would. For example:
+    </p>
+    <pre class="block"><code>rvm install 3.2.2</code></pre>
+    <p>
+      Once you get Ruby installed, you can verify the OpenSSL version it is using with:
+    </p>
+    <pre class="block"><code>ruby -ropenssl -e 'puts OpenSSL::OPENSSL_LIBRARY_VERSION'</code></pre>
+    <p>
+      When you change Ruby versions (with <code>rvm use 3.0.0</code> or whatever) the OpenSSL version should change according to however you set up that Ruby version. It should be no problem to have multiple versions of Ruby and multiple versions of OpenSSL installed at the same time.
+    </p>
+    <p>
+      What if none of the above has worked for you? You can start digging through the <a href="#further-reading">further reading</a> section. If you learn something I don't know, <a href="https://carhenge.club/@skiles/112063128714852409">please reach out to me on Mastodon</a>.
+    </p>
+    <p>
+      What if downgrading <em>did</em> work for you but now you feel bad about running a out-of-date version of OpenSSL? Then you are smart! OpenSSL's <a href="https://heartbleed.com">Heartbleed bug</a>, a decade ago, was the most catastrophic security problem in internet history to that date. If a similar bug were discovered today, when you and howevermany other Rubyists are running a copy of OpenSSL <em>no longer getting any security updates</em>, with no clear path to upgrade, it would be a disaster the scale of which I don't like to contemplate.
+    </p>
+    <figure>
+      <img class="shadow block" src="/img/heartbleed.png" alt="Heartbleed logo" />
+      <figcaption class="block">Symbol of Heartbleed, a profound OpenSSL security bug discovered in 2014</figcaption>
+    </figure>
+    <p>
+      It is rational to want to keep running an old version of Ruby on a legacy app where it works well enough. But open-source software is typically created by volunteers who unfortunately have limited time, and who have chosen not to patch old versions of OpenSSL and Ruby. This <a href="https://xkcd.com/2347/">classic XKCD cartoon</a> captures the situation.
+    </p>
+    <p>Update: shortly after I wrote this, the <a href="https://www.wired.com/story/xz-backdoor-everything-you-need-to-know/">XZ backdoor</a> vividly illustrated my point that OpenSSL exploits are a catastrophe waiting to happen, and limited volunteer time is a major problem.</p>
+    <p>
+      OpenSSL version 3 is not yet a hard requirement of Ruby, but it will probably become <a href="https://github.com/postmodern/ruby-install/issues/473#issuecomment-1828937283">a hard requirmenet of some Ruby installation methods</a>. Unless your Ruby app is an offline one, it is time to accept that you must upgrade. Ruby 3.0 and below will never be secure.
+    </p>
+    <h3 id="further-reading">Further reading and credit</h3>
+    <p>More about this problem from GitHub and blogs:</p>
+    <ol class="block">
+      <li>
+        <a href="https://nickymarino.com/2021/12/17/install-ruby-273-on-m1/">Installing with <code>LDFLAGS</code> settings</a> by blogger Nicky Marino
+      </li>
+      <li>
+        <a href="https://github.com/rbenv/ruby-build/discussions/2293">While using <samp>rbenv</samp></a>, containing a reminder to keep Xcode up to date
+      </li>
+      <li>
+        <a href="https://github.com/rvm/rvm/issues/5246">While using MacPorts</a> featuring more advice on how to unlink and re-link OpenSSL
+      </li>
+      <li>
+        <a href="https://mentalized.net/journal/2021/11/29/ruby-3-0-3-rvm-and-openssl-1-1/">Using RVM and MacPorts</a> by blogger Jakob Skjerning
+      </li>
+      <li>
+        <a href="https://github.com/rvm/rvm/issues/5261">With a deeper dive into Homebrew</a> and its <samp>binutils</samp>
+      </li>
+      <li>
+        <a href="https://github.com/rbenv/homebrew-tap/issues/9">While trying to downgrade to OpenSSL version 1.0</a> which, once again, you probably shouldn't do
+      </li>
+    </ol>
+    <p>People who helped me with this:</p>
+    <ol class="block">
+      <li>
+        <a href="https://christa.town/">Christa Hartsock</a>
+      </li>
+      <li>
+        <a href="https://cassey.dev/">Cassey Lottman</a>
+      </li>
+    </ol>
+  </article>
+  <hr>
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+</body></html>

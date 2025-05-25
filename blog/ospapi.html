@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Using the Open Syllabus Project API</title>
+  <meta name="description" content="Using the Open Syllabus Project API">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+
+  <meta property="og:title" content="Using the Open Syllabus Project API">
+  <meta property="og:description" content="Data on what books are assigned in college coursework is the basis of a book recommendation system for libraries">
+  <meta property="og:image" content="https://johnskinnerportfolio.com/blog/img/cornellsunset.jpg">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Using the Open Syllabus Project API">
+  <meta name="twitter:description" content="Data on what books are assigned in college coursework is the basis of a book recommendation system for libraries">
+  <meta name="twitter:image" content="https://johnskinnerportfolio.com/blog/img/cornellsunset.jpg">
+  
+  <link rel="icon" href="https://johnskinnerportfolio.com/favicon.ico">
+  <link rel="shortcut icon" href="https://johnskinnerportfolio.com/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+</head>
+<body>
+
+  <h1><a class="invisilink" href="http://johnskinnerportfolio.com/">John Skiles Skinner's portfolio</a></h1>
+
+  <article>
+    <div class="darkband">
+      <div class="articleillushead">
+        <div>
+          <img class="headillus" src="/img/cornellsunset.jpg" alt="A photograph of Cornell University campus at sunset in winter">
+        </div>
+        <div>
+          <h2>Using the Open Syllabus Project API</h2>
+          <p>
+            Data on what books are assigned in college coursework is the basis of a book recommendation system for libraries
+          </p>
+          <time class="block">26 February 2020</time>
+        </div>
+      </div>
+    </div>
+    <p>
+      The Open Syllabus Project (<a href="https://opensyllabus.org/">opensyllabus.org</a>) has gathered millions of syllabi from millions of college and university classes. Among the data they've scraped from the syllabi are the works (textbooks, novels, journal articles, essays, etc.) assigned as reading in those classes. This post is about a way to use this data to build a book recommendation engine.
+    </p>
+    <figure class="block">
+      <video class="shadow" controls>
+        <source src="/vid/SyllabusBrowse.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <figcaption>A video demonstration of the book recommendation engine driven by Open Syllabus Project data</figcaption>
+    </figure>
+    <h4>The problem</h4>
+    <p>
+      Library discovery faces a disadvantage in comparison to e-commerce discovery. Amazon can show me books related to a particular book that interests me by using their records of what books have been purchased by the same people. Libraries, being <a href="https://www.libraryjournal.com/?detailStory=Cornell-University-Libraries-Offer-Suite-of-Privacy-Services">committed to privacy</a> and free inquiry, cannot ethically make use of checkout history in this way. Often, to prevent misuse, libraries do not even store the data that would be needed for a book recommendation algorithm.
+    </p>
+    <p>
+      Syllabus assignment data addresses this limitation. Two works that are assigned in the same college class are (probably?) related. Perhaps they are related in a way that's similar to how two books purchased online by the same customer are related. The people at Open Syllabus Project (OSP) have given the name "coassignment" to this property of being assigned in the same class.
+    </p>
+    <figure>
+      <img class="shadow block" src="/img/classroom.jpg" alt="A photograph of an empty classroom" />
+      <figcaption class="block">A Cornell University classroom, Plant Science Building</figcaption>
+    </figure>
+    <p>
+      In September 2019 I attended a <a href="https://wiki.lyrasis.org/display/LD4P2/Blacklight-LD+Working+Meeting+-+September+2019">Blacklight meeting at Stanford</a>. Blacklight is a <a href="https://en.wikipedia.org/wiki/Discovery_layer">discovery layer</a> &mdash; software people use to locate things in a library. Hearing attendees discussing this potential use of syllabus data, I wrote to Open Syllabus Project.
+    </p>
+    <p>
+      OSP kindly sent me a sample of syllabus data, from which I built a <a href="https://github.com/jskinne3/cosine">data service</a> prototype that calculated coassignments. It was so successful as a recommendation engine that OSP collaborated with me to build a <em>coassignments</em> API call of their own:
+    </p>
+<pre class="block"><code><a href="https://api.opensyllabus.org/coassignments/isbn/9780385490818">https://api.opensyllabus.org/coassignments/isbn/9780385490818</a></code></pre>
+    <p>
+      When they were done, I switched my blacklight code from my prototype API to this official OSP API. This blog post is about my implementation.
+    </p>
+    <h4>How to query the OSP API</h4>
+    <p>
+      If you have Open Syllabus Project API credentials, clicking the above link will show you some API documentation and the JSON result of the API call. That result is a listing of works coassigned with (assigned in the same classes as) a given work, which is specified by ISBN number. In this example, the ISBN is "9780385490818" at the end of the URL. (The book with that ISBN is <em><a href="https://www.worldcat.org/search?q=9780385490818">The Handmaid's Tale</a></em>.)
+    </p>
+    <p>
+      The same API call can viewed in raw JSON format, like this:
+    </p>
+<pre class="block"><code><a href="https://api.opensyllabus.org/coassignments/isbn/9780385490818?format=json">https://api.opensyllabus.org/coassignments/isbn/9780385490818?format=json</a></code></pre>
+    <p>
+      In addition to ISBN, the API also supports finding works by <a href="https://www.doi.org/">DOI</a> and by Open Syllabus Project's in-house ID system.
+    </p>
+    <h4>Query with multiple ISBNs</h4>
+    <p>
+      The API can also handle multiple ISBNs. They should be separated by commas, like this:
+    </p>
+<pre class="block"><code><a href="https://api.opensyllabus.org/coassignments/isbn/9780525435006,9780385490818">https://api.opensyllabus.org/coassignments/isbn/9780525435006,9780385490818</a></code></pre>
+    <p>
+      Both of the ISBNs in that example are valid identifiers for <em>The Handmaid's Tale</em>, but Open Syllabus Project only knows about one of them. What counts as "a book" is a complex matter, and ISBN assignments over history are correspondingly messy. In my implementation of the API, I transmit all ISBNs known for a given library catalog entry to maximize the chance that the API will discover the book(s) I mean.
+    </p>
+    <figure>
+      <img class="shadow block" src="/img/organizedbookshelf.jpg" alt="A photograph of a bookshelf" />
+      <figcaption class="block">A bookshelf where I work, <a href="https://mannlib.cornell.edu/">Mann Library</a>, Cornell University</figcaption>
+    </figure>
+    <h4>The implementation</h4>
+    <p>
+      Below you'll find code for a Blacklight implementation of the OSP API. The implementation consists of two parts: back-end code that gets and processes data from the Open Syllabus Project API, and front-end code that shows that information to the user.
+    </p>
+    <p>
+      This code is intended to recommend works related to a current item being viewed in the catalog, which is the first feature in the above video. The second feature in the video, browsing works by course subject, is not currently supported by the API.
+    </p>
+    <h4>The back-end code</h4>
+    <p>
+      Blacklight is a Ruby on Rails application. My Rails code, which can <a href="https://github.com/LD4P/blacklight-cornell/blob/dev/app/controllers/browseld_controller.rb#L40">also be found on Github</a>, looks like this:
+    </p>
+    
+    <pre class="block"><code>def osp_coassignments
+  (render json: [], status: 200; return) if params[:isbns].blank?
+
+  range = 0..19 <span class="com"># return top 20 most assigned works</span>
+  token = ENV['OSP_API_TOKEN'] <span class="com"># Token in .env file</span>
+  isbns = params[:isbns] <span class="com"># ISBNs joined with commas</span>
+  cnctn = HTTPClient.get(
+    "https://api.opensyllabus.org/coassignments/isbn/" + isbns,
+    nil, <span class="com"># query not used by Open Syllabus Project's API</span>
+    {authorization: "Token #{token}"} 
+  )
+  json_body = JSON.parse(cnctn.content)
+  <span class="com"># return empty results if ISBNs not found</span>
+  (render json: [], status: 200; return) unless json_body.kind_of?(Array)
+  <span class="com"># sort and return top results if found</span>
+  sort_rank = json_body.sort_by{|a| a['count'] }.reverse
+  top_items = sort_rank[range]
+  isbn_nums = top_items.map{|b| b['isbns'].map{|c| c.to_i }}.reject { |d| d.empty? }
+
+  render json: isbn_nums, status: cnctn.status
+end
+</code></pre>
+    <p>
+      This Ruby is mainly a wrapper for the OSP API. It connects to and authenticates with the Open Syllabus Project API, processes the results a little, and re-transmits them for use by our front-end code. The output is an array of works, where each works is represented by an array of ISBN integers. The resulting nested arrays look like this:
+    </p>
+<pre class="block"><code>[[9780156035842,679417397,78389368,30565073,151660387,452254264],[307264882,375704140,701130601,452261368,1400033411,140283404,394535979,896211231]]</code></pre>
+    <p>
+      The most frequently coassigned works are listed first. This is accomplished by sorting by the <code>count</code> property, which represents the number of times each work listed was co-assigned with the input work. The listing stops after the 20 most coassigned works; this number can be adjusted with the <code>range</code> variable.
+    </p>
+    <p>
+      The <code>.map{|c| c.to_i }}</code> that converts each ISBN from a string to an integer was chosen as a simple way to remove nonnumeric suffixes that ISBNs in the resulting data sometimes have.
+    </p>
+
+    <h4>The front-end code</h4>
+    <p>
+      The front-end code <a href="https://github.com/LD4P/blacklight-cornell/blob/dev/app/assets/javascripts/syllabi_browse.js">can be found in full on Github</a>. I'll highlight a few parts below.
+    </p>
+    <p>
+      The JavaScript function that triggers our back-end code, getting a list of works by ISBN, is pretty simple:
+    </p>
+<pre class="block"><code><span class="com">// Get coassignmenst via internal API that fronts OSP API</span>
+queryOspCoassignmentsApi: async function(isbnsParam) {
+  try {
+    const localRoute = "/browseld/osp_coassignments?isbns=";
+    return await $.get(localRoute + isbnsParam);
+  } catch (err) {
+    return false;
+  }
+},
+</code></pre>
+  <p>
+    That function, and the others to come, use the <a href="https://javascript.info/async-await">async/await pattern</a> to sequence the API calls. The <code>queryOspCoassignmentsApi:</code> key at the outset is because the function is defined as a method of an object used to collect related code together.
+  </p>
+  <p>
+    We don't want to recommend any books that aren't actually in our library catalog. So, we need a way to query Solr (the search platform used by Blacklight) to check that a given work is present. The first of these two functions asks Solr for a count of the number of works matching a list of ISBNs, and the second extracts a boolean value regarding if that count is nonzero:
+  </p>
+<pre class="block"><code><span class="com">// isbns: an array of strings designating a book to be looked up in Solr</span>
+querySolrCheckSuggestion: async function(isbns) {
+  const joinedIsbns = isbns.join(" OR ");
+  const solrServer = $("#solr-server-url-data").html();
+  const solrParams = "/select?&wt=json&rows=1&q=" + joinedIsbns;
+  <span class="com">// Using JSONP to avoid CORS errors, but it prevents use of try/catch</span>
+  return await $.ajax({
+    url: solrServer + solrParams,
+    type: "GET",
+    dataType: "jsonp",
+    jsonp: "json.wrf"
+  });
+},
+
+<span class="com">// solrResults: result of querySolrCheckSuggestion</span>
+hasSolrResults: function(solrResults) {
+  const numFound = solrResults["response"]["numFound"];
+  return numFound > 0;
+}
+</code></pre>
+    <p>
+      The address of the Solr server is coming from a hidden HTML element in the page.
+    </p>
+    <p>
+      I would ideally liked to have had some error handling on that AJAX call, in case Solr is not responding. But, as currently configured, our Solr server requires a JSONP connection. This <a href="https://forum.jquery.com/topic/jquery-ajax-with-datatype-jsonp-will-not-use-error-callback-if-request-fails">prevents error catching</a>.
+    </p>
+    <p>
+      The Solr query wouldn't have to be done on the front end. Our Ruby method could have filtered out the books missing from the catalog <em>before</em> sending ISBNs on to the front end JS. The reason I chose not to do it that way is speed &mdash; I want works known to be in the catalog to pop in to the UI as soon as their existence in Solr is discovered. If we'd done the check on the server side, we would have to wait until every book was checked in Solr before beginning to render the results.
+    </p>
+    <p>
+      I haven't included the code in this blog post, but we also need a function that writes the recommended books to the page. How this looks will depend on how your catalog looks and how you want the recommendations to fit into it. You can see what I did <a href="https://github.com/LD4P/blacklight-cornell/blob/dev/app/assets/javascripts/syllabi_browse.js#L35">on Github</a>.
+    </p>
+    <figure>
+      <img class="shadow block" src="/img/analogisnteasy.jpg" alt="A photograph of wall with objects attached to it, including strips of film and a floppy disk" />
+      <figcaption class="block">Inside Cornell digitization services</figcaption>
+    </figure>
+    <h4>Putting the front-end together</h4>
+    <p>
+      Finally, this is the code that triggers all the JS we've written so far:
+    </p>
+<pre class="block"><code><span class="com">// Display books related to (coassigned with) the current book view</span>
+getCoassignedBooks: async function(suggestions) {
+  const isbns = $("#isbns-json-data").html();
+  const isbnsParam = JSON.parse(isbns).join(",");
+  const coAssigned = await this.queryOspCoassignmentsApi(isbnsParam);
+  if (!coAssigned) {
+    return; <span class="com">// stop execution if API call does not work</span>
+  }
+  for (const assignment of coAssigned) {
+    const queryCatalog = await this.querySolrCheckSuggestion(assignment);
+    if (this.hasSolrResults(queryCatalog)) {
+      const result = queryCatalog["response"]["docs"][0];
+      openSyllabus.formatAndListSuggestions(result, assignment); <span class="com">// write HTML</span>
+    }
+  }
+  window.bookcovers.onLoad(); <span class="com">// fill cover images</span>
+},
+</code></pre>
+    <p>
+      Above you can see that the functions to query for Open Syllabus data, to query Solr, to count Solr results, and to write HTML to the page are all used. The list of input ISBNs comes from the webpage that the display is to be rendered on. I've assumed here it's in JSON form, in a hidden HTML element with the id <code>isbns-json-data</code>. This element should be added to the Rails view where the recommendations will appear, or to a partial used in that view.
+    </p>
+    <h4>Credits</h4>
+    <p>
+      Jody Leonard and <a href="https://twitter.com/CasseyLottman">Cassey Lottman</a> were helpful in writing this code!
+    </p>
+    <p>
+      The code was written at Cornell University Library as a part of the <em>Linked Data for Production: Pathway to Implementation</em> (<a href="http://ld4p.org/">LD4P.org</a>) grant by the <a href="https://mellon.org/">Andrew W. Mellon Foundation</a>. Its use is governed by the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.
+    </p>
+
+  </article>
+  <hr>
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+
+</body></html>
+

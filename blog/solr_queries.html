@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Semantic search faceting</title>
+  <meta name="description" content="Use Solr facets to combine queries and evaluate suggested searches before presenting them to users">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/old_main.css">
+  <link rel="stylesheet" href="/old_blog.css">
+
+  <meta property="og:title" content="Semantic search faceting" />
+  <meta property="og:description" content="Use Solr facets to combine queries and evaluate suggested searches before presenting them to users" />
+  <meta property="og:image" content="http://johnskinnerportfolio.com/blog/img/eclipse.jpg" />
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Semantic search faceting">
+  <meta name="twitter:description" content="Use Solr facets to combine queries and evaluate suggested searches before presenting them to users">
+  <meta name="twitter:image" content="http://johnskinnerportfolio.com/blog/img/eclipse.jpg">
+  
+  <link rel="icon" href="../favicon.ico" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans" >
+</head>
+<body>
+
+  <h1><a class="invisilink" href="http://johnskinnerportfolio.com/">John Skiles Skinner's portfolio</a></h1>
+
+  <article>
+    <div class="darkband">
+      <div class="articleillushead">
+        <div>
+          <img class="headillus" src="/img/eclipse.jpg" alt="A picture of colorful television static" />
+        </div>
+        <div>
+          <h2>Semantic search faceting</h2>
+          <p>
+            In which I learn how to use Solr facets to evaluate suggested searches before presenting them to users
+          </p>
+          <time class="block">16 July 2019</time>
+        </div>
+      </div>
+    </div>
+    
+    <h4>Evaluating suggested queries</h4>
+    <p>
+      I am in my first weeks at my new job at Cornell. I am working on a product in which a list of suggested searches appears. Only some of these suggested searches would produce any actual results if chosen by a user. Cornell does not want a user to attempt a suggested query only to see no results. So, I need a way to remove zero-result searches from the list.
+    <p>
+      Furthermore, I may also want to deprioritize search suggestions with with very few results.
+    </p>
+    <p>
+      To accomplish both these things, I need a count of how many results each search suggestion will return.
+    </p>
+    <h4>How to count results</h4>
+    <p>
+      Getting <em>one</em> count is easy enough:
+    </p>
+<pre class="block">
+?q=actor
+&rows=0
+</pre>
+    <p>
+      The <code>q</code> param is the main query, the search suggestion I'm evaluating. In this example it is a simple search for the string "actor". The <code>rows</code> param set to zero removes unneeded results output, since all we need is a count. This is given in the <code>numFound</code> portion of the output:
+    </p>
+<pre class="block">
+"response":{
+  "numFound":17,
+  "start":0,
+  "docs":[]
+}
+</pre>
+    </p>
+    <p>
+      This is useful, but I'll need to re-run it for every suggested search term. If the list is long, I would be making a lot of query requests. This would be unacceptably slow as a part of a UI.
+    </p>
+    <h4>Combining queries with facets</h4>
+    <p>
+      Likely it would be faster to present multiple queries to Solr, all in the same http request. At least network connection time would saved. And maybe we can reduce query execution time?
+    </p>
+    <p>
+      There is no way (that I'm aware of) to combine available queries in the same request. But each query that I want is a count. And there <em>is</em> a way to get multiple counts: facets.
+    </p>
+    <pre class="block">
+?q=*:*
+&facet=on
+&facet.query=actor
+&facet.query=bard
+&facet.query=caroler
+&rows=0
+</pre>
+    <p>
+      This query asks for three counts: the number of records (or documents) that contain the string "actor", the number with "bard", and the number with "caroler". The (truncated) output looks like this:
+    </p>
+    <pre class="block">
+"response":{
+  "numFound":232,
+  "start":0,
+  "docs":[]
+},
+"facet_counts":{
+  "facet_queries":{
+    "actor":17,
+    "bard":3,
+    "caroler:5"
+  }
+}
+</pre>
+    <p>
+      Now the output contains integers representing the count for each search term. Why is the <code>numFound</code> higher than any of the individual counts, and even greater than the total of all the counts?
+    </p>
+    <p>
+      Because the query contains <code>q=*:*</code> which queries for all values in all fields. This query finds all documents available to Solr. The <code>numFound</code> reflects this. The facet counts represent subsets of this group of all documents.
+    </p>
+    <hr class="block">
+    <p>
+      Image of eclipse by:<br>Luc Viatour, CC BY-SA 3.0, <a href="https://commons.wikimedia.org/w/index.php?curid=1107408">https://commons.wikimedia.org/w/index.php?curid=1107408</a>
+    </p>
+    <p>
+      Thanks to Shalin Shekhar Mangar for introducing me to this aspect of Solr facets.
+    </p>
+  </article>
+  <hr />
+  <p><a href="#top">Top of page</a> | <a href="index.html">Blog index</a> | <a href="../index.html">Return home</a></p>
+
+</body>
+</html>
