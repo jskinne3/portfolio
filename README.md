@@ -1,6 +1,6 @@
 # Personal portfolio website
 
-To generate the serve site locally, run
+To serve the site locally, run
 ```
 npx @11ty/eleventy --serve 
 ```
