@@ -53,7 +53,7 @@ We are blessed with members who politely take turns speaking. We loop back aroun
 
 I never intended for it to be this durable. Neither I nor the other original founders go often anymore, yet somehow the club continues without us.
 
-Honestly, I think once it gets established it becomes awkward to kill off. So on one does. It's low commitment so, just keep doing it.
+Honestly, I think once it gets established it becomes awkward to kill off. So no one does. It's low commitment so, just keep doing it.
 
 In-group language like the word "blub" for snacks helps to keep it alive. A sense of ceremony and shared tradition elevates it above the day-to-day.
 
