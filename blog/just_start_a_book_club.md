@@ -23,7 +23,7 @@ I co-founded a book club with some random people I met in a bar. It is probably 
 
 Worried that democracy is crumbling because there aren't enough civic institutions? Start a book club.
 
-Worried about the male loneliness epidemic? Invite some men to your book club.
+Worried about the *male loneliness epidemic*? Invite some men to your book club.
 
 ## Structure
 
@@ -55,6 +55,6 @@ Honestly, I think once it gets established it becomes awkward to kill off. So on
 
 In-group language like the word "blub" for snacks helps to keep it alive. A sense of ceremony and shared tradition elevates it above the day-to-day.
 
-Keep inviting new people in, obviously. Some people will drop off, bt if new people feel a sense of owernship, they may choose to carry the torch.
+Keep inviting new people in, obviously. Some people will drop off, but if new people feel a sense of ownership, they may choose to carry the torch.
 
 
