@@ -9,6 +9,7 @@ description: The blog of John Skies Skinner
 
 ## 2025
 
+* [Just start a book club](just_start_a_book_club)
 * [On GSAi](GSAi)
 * [Domain name battlefield](domain_name_battlefield)
 
