@@ -25,7 +25,7 @@ Worried that democracy is crumbling because there aren't enough civic institutio
 
 Worried about the *male loneliness epidemic*? Invite some men to your book club.
 
-## Structure
+### Structure
 
 Formalize it, a little. Have a system for choosing books and choosing where and when to meet. Pick a name.
 
@@ -37,19 +37,19 @@ In combining snacks and fun reads, we took some inspiration from the "Book It" p
 
 ![Pins advertising the "Book It" program arranged on a Pizza Hut tablecloth](/img/bookit.jpg)
 
-## Meetings
+### Meetings
 
 First we ask the person who chose the book, "why did you pick this book?" Then, free-form discussion of everyone's thoughts.
 
 We are blessed with members who politely take turns speaking. We loop back around to anyone who got interrupted. Maybe we lucked out with courteous members; you might have to have a policy to ensure everyone gets a chance to speak.
 
-## Objections
+### Objections
 
 "I don't have any friends." You will
 
 "My friends don't read." How about a video game club? A perfume-smelling club? Whatever your people are doing, just put a club around it.
 
-## Durability
+### Durability
 
 I never intended for it to be this durable. Neither I nor the other original founders go often anymore, yet somehow the club continues without us.
 
