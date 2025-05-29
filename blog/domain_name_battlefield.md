@@ -13,7 +13,7 @@ Published in *2600: The Hacker Quarterly*, <a href="https://store.2600.com/produ
 
 John Skiles Skinner
 
-![Magazine cover image: an illustration of Elon Musk as a crumbling ceramic bust with coins in his eyes](https://johnskinnerportfolio.com/blog/img/2600winter2024-2025.png)
+![Magazine cover image: an illustration of Elon Musk as a crumbling ceramic bust with coins in his eyes](/img/2600winter2024-2025.png)
 
 I am thrilled to find my guide to tormenting Christian nationalist lobbyists was published under a magazine cover mocking Elon Musk. Broligarchs and homophobes are on the same vile team. Now is the time to speak back against them in ways that they cannot control.
 
