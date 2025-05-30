@@ -64,7 +64,7 @@ I believe the firings and the AI have the same purpose: to get humans out of the
 
 ---
 
-Originally published as [a Bluesky thread](https://bsky.app/profile/skiles.bsky.social/post/3lkwbunaatk25) and converted to a blog post at the suggestion of [Dr. Damien P. Williams](https://bsky.app/profile/wolvendamien.bsky.social)
+Originally published as [a Bluesky thread](https://bsky.app/profile/skiles.blue/post/3lkwbunaatk25) and converted to a blog post at the suggestion of [Dr. Damien P. Williams](https://bsky.app/profile/wolvendamien.bsky.social)
 
 ---
 
