@@ -3,13 +3,14 @@ tags: posts
 layout: blog.njk
 title: "Ship of Theseus beats strangler fig"
 description: Parasitic plants are not as popular as boats 🌱⛵
+date: 2024-10-22T12:00:00
 ---
 
 # {{ title }}
 ## {{ description }}
 
 John Skiles Skinner \
-22 October 2024
+{{ date | postDate }}
 
 ---
 

@@ -1,11 +1,14 @@
 ---
 tags: posts
 layout: blog.njk
-title: "Sometimes I blog"
+title: "Skiles.blue blog"
 description: The blog of John Skies Skinner
+date: 2025-05-29T12:00:00
 ---
 
 # {{ title }}
+
+Re-launching my personal website and blog as SKILES.BLUE
 
 ## 2025
 

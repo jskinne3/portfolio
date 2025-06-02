@@ -3,12 +3,13 @@ tags: posts
 layout: blog.njk
 title: "On GSAi"
 description: I helped build a government AI system. DOGE fired me, rolled the AI out to the whole agency, and implied the AI can do my job and the jobs of the others they've fired.
+date: 2025-03-21T12:00:00
 ---
 
 # {{ title }}
 
 John Skiles Skinner \
-21 March 2025
+{{ date | postDate }}
 
 ---
 

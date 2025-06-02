@@ -3,13 +3,14 @@ tags: posts
 layout: blog.njk
 title: "Just start a book club"
 description: Don't over-think it. There are a lot of interesting organizations you could start; too many. Why not a book club?
+date: 2025-05-28T12:00:00
 ---
 
 # {{ title }}
 ## {{ description }}
 
 John Skiles Skinner \
-28 May 2025
+{{ date | postDate }}
 
 ---
 
