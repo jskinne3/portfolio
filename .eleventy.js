@@ -33,11 +33,9 @@ module.exports = function(eleventyConfig) {
 
   // As suggested by https://11ty.rocks/eleventyjs/dates/
   const { DateTime } = require("luxon");
-
   eleventyConfig.addFilter("postDate", (dateObj) => {
     return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_FULL);
   });
-
 
   return {};
 };
