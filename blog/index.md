@@ -2,13 +2,15 @@
 tags: posts
 layout: blog.njk
 title: "Skiles.blue blog"
-description: The blog of John Skies Skinner
+description: "The blog of John Skies Skinner: No ads | No trackers | Just blog"
 date: 2025-05-29T12:00:00
 ---
 
 # {{ title }}
 
-Re-launching my personal website and blog as SKILES.BLUE
+John Skiles Skinner blogs at skiles.blue
+
+No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenyellow">&#9640;</span> Just blog
 
 ## 2025
 

@@ -143,6 +143,12 @@ blockquote p {
   display: inline;
 }
 
+/* utility */
+.greenyellow {
+  color: greenyellow;
+}
+
+
 /* background color toggle, must appear after body */
 .toggle {
   position: absolute;
