@@ -4,7 +4,7 @@ layout: blog.njk
 title: "How to hack queer-hating lobbyists"
 description: "The Christian nationalist plan to hide, and how it backfires"
 image: /preview/MuskBreakingUp.jpg
-date: 2024-12-15T12:00:00
+date: 2025-01-01T12:00:00
 ---
 
 # {{ title }}
