@@ -24,7 +24,7 @@ module.exports = function(eleventyConfig) {
 			language: "en",
 			title: "John Skiles Skinner",
 			subtitle: "Now is the website of our discontent",
-			base: "https://johnskinnerportfolio.com/",
+			base: "https://skiles.blue/",
 			author: {
 				name: "John Skiles Skinner",
 			}
