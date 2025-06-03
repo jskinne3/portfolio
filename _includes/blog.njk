@@ -9,6 +9,8 @@ title: John Skiles Skinner's blog
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" media="screen" href="/screen.css">
     <link rel="stylesheet" type="text/css" media="print" href="/print.css">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico">
 
     <title>{{ title }}</title>
     <meta name="twitter:card" content="summary_large_image">
@@ -18,8 +20,8 @@ title: John Skiles Skinner's blog
     <meta name="description" content="{{ description }}">
     <meta name="twitter:description" content="{{ description }}" />
     <meta property="og:description"  content="{{ description }}" />
-    <meta name="twitter:image" content="{{ image if image else "https://johnskinnerportfolio.com/preview/card.jpg" }}" />
-    <meta property="og:image"  content="{{ image if image else "https://johnskinnerportfolio.com/preview/card.jpg" }}" />
+    <meta name="twitter:image" content="{{ image if image else "/preview/card.jpg" }}" />
+    <meta property="og:image"  content="{{ image if image else "/preview/card.jpg" }}" />
     <script>
       function detectColorScheme(){
         var theme="light";
