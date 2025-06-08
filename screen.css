@@ -83,6 +83,11 @@ footer {
   text-align: center;
   color: fuchsia;
 }
+#footbtm {
+  color: greenyellow;
+  margin-top: 2rem;
+  font-size: smaller;
+}
 nav > span::after {
   content:  "\276F ";
   color: greenyellow;

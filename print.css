@@ -30,7 +30,7 @@ nav > .back:after {
 nav > .next:before {
   content: "\21D2"
 }
-.toggle, nav {
+.toggle, nav, footer {
   display: none;
 }
 h1 {
