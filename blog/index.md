@@ -43,6 +43,7 @@ No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenye
 * [My first Glitch web app](starting_glitch)
 * [Making a simple, static website with AWS](static_aws)
 * [Replacing setTimeout with promises](wait)
+* [Wikiconference North America](wikiconference)
 
 ## 2018
 
