@@ -130,6 +130,9 @@ pre > code {
   padding: 20px;
   display: block;
 }
+code > .comment {
+  color: fuchsia;
+}
 hr {
   border: 1px solid fuchsia;
 }

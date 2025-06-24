@@ -14,6 +14,7 @@ No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenye
 
 ## 2025
 
+* [Ruby tricks](ruby_tricks)
 * [Just start a book club](just_start_a_book_club)
 * [On GSAi](GSAi)
 * [Domain name battlefield](domain_name_battlefield)

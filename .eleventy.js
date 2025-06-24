@@ -1,4 +1,5 @@
 const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("screen.css");
@@ -32,6 +33,9 @@ module.exports = function(eleventyConfig) {
 			}
 		}
 	});
+
+  // Per https://www.11ty.dev/docs/plugins/syntaxhighlight/
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   // As suggested by https://11ty.rocks/eleventyjs/dates/
   const { DateTime } = require("luxon");
