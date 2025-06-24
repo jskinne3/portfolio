@@ -78,8 +78,8 @@ The essence of my approach is to crack every string into arrays; transpose (*yes
 def longest_common_prefix(strs)
 
   # Guards, catch simple edge cases
-  (return "") if (strs.include? "")
-  (return strs[0]) if (strs.length == 1)
+  return "" if strs.include? ""
+  return strs[0] if strs.length == 1
 
   # Trim every string to the length of the
   # shortest, and convert strings to an array
