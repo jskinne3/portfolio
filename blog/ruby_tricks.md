@@ -14,7 +14,7 @@ John Skiles Skinner \
 
 ---
 
-A near-guilty pleasure of mine is clever little riddles in Ruby that rely on the language's rich Array, Hash, and String methods. [Just look at](https://apidock.com/ruby/v2_5_5/Array/transpose) Ruby's `transpose` method and tell me you're not aching to find some clever way to put it to work!
+A near-guilty pleasure of mine is little riddles in Ruby that rely on the language's rich Array, Hash, and String methods. [Just look at](https://apidock.com/ruby/v2_5_5/Array/transpose) Ruby's `transpose` method and tell me you're not aching to find some clever way to put it to work!
 
 These questions happen to come up in job interviews a lot. If the interviewer gives me a choice of language, I will pick Ruby every time. Even when I get the vibe that Python would be the more fashionable choice, which is frequently.
 
