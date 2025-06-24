@@ -26,7 +26,7 @@ The challenge is to sort an array, except for selected elements which are to be 
 ```
 array = ['b', 'd', '|', 'a', '|', 'c']
 ```
-sort it in such a way that all the letters are in alphabetical order but the pipe (`|`) characters stay in the same place. The sorted letters should "flow around" the pipes, leaving them in place.
+sort it in such a way that all the letters are in alphabetical order but the pipe (`|`) characters stay in the same place. The sorted letters should "flow around" the pipes without disturbing them.
 
 My approach is to extract from the array the smaller array of letters we want to sort, sort them, and then collate them back into the original array.
 
@@ -72,7 +72,7 @@ array = ['fish', 'fishing', 'fiscal', 'finagle']
 ```
 the longest common prefix is `fi`.
 
-The essence of my approach is to crack every string into arrays; transpose (yes!) the arrays so that they are an array of the first letter, the second letter, and so on; then identify how many of these arrays starting from the beginning of each word consist of only a single letter. Leetcode requires the code to be a function; I also want to use a function so I can `return` from it.
+The essence of my approach is to crack every string into arrays; transpose (*yes!*) the arrays so that they become an array of the first letter, the second letter, and so on; then identify how many of these arrays starting from the beginning of each word consist of only a single letter. Leetcode requires the code to be a function; I also want to use a function so I can `return` from it.
 
 ```ruby
 def longest_common_prefix(strs)
@@ -118,6 +118,6 @@ I just chop off the ragged right edge of the matrix. No characters there can pos
 
 ![Text in which the "ragged right" has been highlighted. Below a photo of a woman with a bull, the text reads: Molly Flagg Knudsen was a Nevada cattle rancher, writer, and Nevada State Museum trustee. As a Nevada Regent from 1960-1980, she helped to establish the Desert Research Institute, the University of Nevada Press, and the community college system. Courtesy of University Archives, University of Nevada, Reno Libraries](/img/ragged_right.png)
 
-*Image: the concept of "ragged right" in [typographic alignment](https://en.wikipedia.org/wiki/Typographic_alignment) applies to trimming our matrix of strings*
+*Image: the concept of "ragged right" in [typographic alignment](https://en.wikipedia.org/wiki/Typographic_alignment) applies to trimming the rightmost portion of our matrix of strings*
 
 I have a habit of avoiding indentation by using implicit or near-implicit loops that fit on one line. In the above code I use `map` or `map!` four times, each of which is an iteration over the array. The code might be oodles faster if I only iterated once. But, for these toy problems, I prefer the conceptual simplicity of a single line that does a single thing to every element across the array.
