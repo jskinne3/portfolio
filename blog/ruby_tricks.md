@@ -34,13 +34,10 @@ My approach is to extract from the array the smaller array of letters we want to
 # the array we are given
 array = ['b', 'd', '|', 'a', '|', 'c']
 
-# replace all pipes with nil, then remove the nils,
-# resulting in a smaller array containing only letters
-smaller = array.map{|e| e == '|' ? nil : e }.compact
-
-# Sort the array in reverse-alphabetical order, because
-# later when we use `pop` it will be reversed again
-smaller.sort!.reverse!
+# Remove the pipes from the array and sort the letters
+# in reverse-alphabetical order, because later when
+# we use`pop` it will be reversed again
+smaller = array.reject{|e| e == '|'}.sort.reverse
 
 # Iterate over the original array, modifying it so that
 # every letter (every non-pipe) is replaced by a letter
@@ -52,9 +49,9 @@ puts array.inspect
 # ["a", "b", "|", "c", "|", "d"]
 ```
 
-A fun detail is that I use several methods that end in an exclamation point (`!`) which is Ruby's way of warning that a method is *more dangerous* than its equivalent without punctuation. These "bang methods" modify or replace the object that they are called on, rather than modifying a copy.
+A fun detail is that I use a method, `map!`, that ends in an exclamation point (`!`) which is Ruby's way of warning that a method is *more dangerous* than its equivalent without punctuation. These "bang methods" modify or replace the object that they are called on, rather than modifying a copy. This means that I don't need to set up a new variable to hold the result I am about to print.
 
-As an example, `smaller.sort!.reverse!` sorts the smaller array, and then reverses the sort order, both times replacing the array with the newly-sorted data. This means that I don't need to set up a new variable to hold the result. Another curiosity of this line is that, per my benchmarking, sorting in ascending (alphabetical) order followed by reversing *is actually faster* than sorting in descending order.
+A curiosity is `.sort.reverse`. Per my benchmarking, sorting in ascending (alphabetical) order followed by reversing *is actually faster* than sorting in descending order.
 
 ![A Pez dispenser in action, featuring the head of Hello Kitty](/img/pez_dispenser.jpg)
 
@@ -62,7 +59,7 @@ As an example, `smaller.sort!.reverse!` sorts the smaller array, and then revers
 
 Another fun part for me is using `pop` because I get to treat the array like a stack. It becomes a Pez dispenser; a creaky spring pushes the pez (array items) to the top, one at a time in a strict order, where they can be popped out of the thing. When I feed these items back into the larger array, the pez dispenser technique guarantees their order and that they are each used only once.
 
-I got approximately this question on a job interview at Apple one time. Also, it is somewhat similar to [Leetcode problem #27](https://leetcode.com/problems/remove-element/).
+I got approximately this question on a job interview at Apple one time. Also, it is somewhat similar to [Leetcode problem #27](https://leetcode.com/problems/remove-element/). Thanks to [Steven Clontz](https://clontz.org/) for making my code one line shorter [by reminding me](https://bsky.app/profile/clontz.org/post/3lsfdppqcvs2o) to use `reject` instead of relying on `map` for everthing, as you will see I always do.
 
 ### Longest common prefix
 
