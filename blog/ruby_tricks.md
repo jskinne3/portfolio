@@ -59,7 +59,7 @@ A curiosity is `.sort.reverse`. Per my benchmarking, sorting in ascending (alpha
 
 Another fun part for me is using `pop` because I get to treat the array like a stack. It becomes a Pez dispenser; a creaky spring pushes the pez (array items) to the top, one at a time in a strict order, where they can be popped out of the thing. When I feed these items back into the larger array, the pez dispenser technique guarantees their order and that they are each used only once.
 
-I got approximately this question on a job interview at Apple one time. Also, it is somewhat similar to [Leetcode problem #27](https://leetcode.com/problems/remove-element/). Thanks to [Steven Clontz](https://clontz.org/) for making my code one line shorter [by reminding me](https://bsky.app/profile/clontz.org/post/3lsfdppqcvs2o) to use `reject` instead of relying on `map` for everthing, as you will see I always do.
+I got approximately this question on a job interview at Apple one time. Also, it is somewhat similar to [Leetcode problem #27](https://leetcode.com/problems/remove-element/). Thanks to [Steven Clontz](https://clontz.org/) for making my code one line shorter by [reminding me](https://bsky.app/profile/clontz.org/post/3lsfdppqcvs2o) to use `reject` instead of relying on `map` for everthing, as you will see I always do.
 
 ### Longest common prefix
 
