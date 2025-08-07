@@ -8,11 +8,36 @@ date: 2025-05-29T12:00:00
 
 # {{ title }}
 
-John Skiles Skinner blogs at skiles.blue
+## No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenyellow">&#9640;</span> Just blog
 
-No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenyellow">&#9640;</span> Just blog
+### 2025
 
-## 2025
+***[Ruby tricks](ruby_tricks):*** toy problems using Ruby's capacity to manipulate arrays, hashes and strings
+
+---
+
+***[Just start a book club](just_start_a_book_club):*** Don't over-think it. There are a lot of interesting organizations you could start.
+
+---
+
+***[On GSAi](GSAi):*** what DOGE accidentally revealed about themselves when they took credit for our AI tool
+
+---
+
+***[Domain name battlefield](domain_name_battlefield):*** The Christian nationalist plan to hide, and how it backfires; from 2600 magazine
+
+<hr style="background-color: black; height: 20px; border: none;" />
+
+### 2024
+
+***[Ship of Theseus beats strangler fig](ship_of_theseus_beats_strangler_fig):*** You shouldn't try to replace a software system all at once, like a lightbulb.
+
+---
+
+***[11ty recursive _site error](11ty_recursive_site_error):*** Before today I blogged with raw HTML, like an animal. My experience with Eleventy.
+
+
+
 
 * [Ruby tricks](ruby_tricks)
 * [Just start a book club](just_start_a_book_club)
