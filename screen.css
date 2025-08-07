@@ -4,6 +4,10 @@
   src: url(fonts/ITC-Eras-Bold.woff2) format("woff2");
 }
 @font-face {
+  font-family: "Eras-Book";
+  src: url(fonts/ITC-Eras-Book.woff2) format("woff2");
+}
+@font-face {
   font-family: 'Duospace';
   font-style: normal;
   font-weight: 400;
@@ -52,11 +56,18 @@ h1 {
   font-size: 3rem;
   line-height: 1.1;
 }
+h2 {
+  font-family: 'Eras-Book';
+  text-transform: uppercase;
+  font-size: 1.65rem;
+}
 h3 {
   color: greenyellow;
+  font-family: 'Eras-Book';
 }
 h4 {
   color: fuchsia;
+  font-family: 'Eras-Book';
 }
 a {
   text-underline-offset: 0.30em;
