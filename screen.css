@@ -162,11 +162,23 @@ blockquote p {
   display: inline;
 }
 
+/* table of contents */
+.contents td {margin: 0; padding: 0;}
+.contents h2 {font-family: 'Eras';}
+.contents table td:first-child {padding-right: 20px;}
+.contents table td {vertical-align: text-top;}
+/* toc month colors */
+.contents table tr:nth-of-type(1) td:first-child {color: red;}
+.contents table tr:nth-of-type(2) td:first-child {color: orangered;}
+.contents table tr:nth-of-type(3) td:first-child {color: limegreen;}
+.contents table tr:nth-of-type(4) td:first-child {color: dodgerblue;}
+.contents table tr:nth-of-type(5) td:first-child {color: fuchsia;}
+.contents table tr:nth-of-type(5) td:first-child {color: indigo;}
+
 /* utility */
 .greenyellow {
   color: greenyellow;
 }
-
 
 /* background color toggle, must appear after body */
 .toggle {

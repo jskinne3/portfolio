@@ -9,7 +9,6 @@ date: 2024-10-09T12:00:00
 # {{ title }}
 
 John Skiles Skinner \
-9 October 2024
 {{ date | postDate }}
 
 ---

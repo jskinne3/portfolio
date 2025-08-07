@@ -1,80 +1,72 @@
 ---
 tags: posts
 layout: blog.njk
-title: "Skiles.blue blog"
+title: "Skiles blog"
 description: "The blog of John Skies Skinner: No ads | No trackers | Just blog"
 date: 2025-05-29T12:00:00
 ---
 
 # {{ title }}
 
-## No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenyellow">&#9640;</span> Just blog
+No ads, no trackers, just blog
 
-### 2025
+<section class="contents">
 
-***[Ruby tricks](ruby_tricks):*** toy problems using Ruby's capacity to manipulate arrays, hashes and strings
+## 2025
 
----
+|     |         |
+| --- | ------- |
+| Jun | [Ruby tricks](ruby_tricks) |
+| May | [Just start a book club](just_start_a_book_club) |
+| Mar | [On GSAi](GSAi) |
+| Jan | [Domain name battlefield](domain_name_battlefield) |
 
-***[Just start a book club](just_start_a_book_club):*** Don't over-think it. There are a lot of interesting organizations you could start.
-
----
-
-***[On GSAi](GSAi):*** what DOGE accidentally revealed about themselves when they took credit for our AI tool
-
----
-
-***[Domain name battlefield](domain_name_battlefield):*** The Christian nationalist plan to hide, and how it backfires; from 2600 magazine
-
-<hr style="background-color: black; height: 20px; border: none;" />
-
-### 2024
-
-***[Ship of Theseus beats strangler fig](ship_of_theseus_beats_strangler_fig):*** You shouldn't try to replace a software system all at once, like a lightbulb.
-
----
-
-***[11ty recursive _site error](11ty_recursive_site_error):*** Before today I blogged with raw HTML, like an animal. My experience with Eleventy.
-
-
-
-
-* [Ruby tricks](ruby_tricks)
-* [Just start a book club](just_start_a_book_club)
-* [On GSAi](GSAi)
-* [Domain name battlefield](domain_name_battlefield)
 
 ## 2024
 
-* [Ship of Theseus beats strangler fig](ship_of_theseus_beats_strangler_fig)
-* [11ty recursive _site error](11ty_recursive_site_error)
-* [My favorite mugs](my_favorite_mugs)
-* [OpenSSL error installing Ruby](ruby_330_error)
+|     |         |
+| --- | ------- |
+| Oct | [Ship of Theseus beats strangler fig](ship_of_theseus_beats_strangler_fig) |
+| Oct | [11ty recursive _site error](11ty_recursive_site_error) |
+| Feb | [My favorite mugs](my_favorite_mugs)| 
+| Jan | [OpenSSL error installing Ruby](ruby_330_error) |
+
 
 ## 2022
 
-* [My favorite characters!](characters)
-* [XMLHttpRequest blocked by CORS policy in local HTML document](cors_from_local_file)
+|     |         |
+| --- | ------- |
+| Dec | [My favorite characters!](characters) |
+| Jul | [XMLHttpRequest blocked by CORS policy in local HTML document](cors_from_local_file)|
 
 ## 2020
 
-* [The Business Model of Police Brutality](business_model_police_brutality)
-* [On being not afraid](notafraid)
-* [Wikidata words](lexemes)
-* [Using the Open Syllabus Project API](ospapi)
+|     |         |
+| --- | ------- |
+| Jun | [The Business Model of Police Brutality](business_model_police_brutality) |
+| Mar | [On being not afraid](notafraid) |
+| Feb | [Using the Open Syllabus Project API](ospapi) |
+| Jan | [Wikidata words](lexemes) |
 
 ## 2019
 
-* [Semantic search faceting](solr_queries)
-* [My first Glitch web app](starting_glitch)
-* [Making a simple, static website with AWS](static_aws)
-* [Replacing setTimeout with promises](wait)
-* [Wikiconference North America](wikiconference)
+|     |         |
+| --- | ------- |
+| Nov | [Wikiconference North America](wikiconference) |
+| Oct | [Replacing setTimeout with promises](wait) |
+| Jul | [Semantic search faceting](solr_queries) |
+| Jul | [Making a simple, static website with AWS](static_aws) |
+| Jun | [My first Glitch web app](starting_glitch) |
+
 
 ## 2018
 
-* [Many happy returns](many_happy_returns)
-* [Nebraska Family Alliance are a hate group](ne_fam_alliance)
-* [Purse shoulder armor](purse_armor)
-* [The Secret was CNAMEs](secret_was_cnames)
-* [Getting started with Elixir and Phoenix](starting_phoenix)
+|     |         |
+| --- | ------- |
+| Sep | [Many happy returns](many_happy_returns) |
+| Jul | [Nebraska Family Alliance are a hate group](ne_fam_alliance) |
+| Jul | [The Secret was CNAMEs](secret_was_cnames) |
+| May | [Purse shoulder armor](purse_armor) |
+| Apr | [Getting started with Elixir and Phoenix](starting_phoenix) |
+
+</section>
