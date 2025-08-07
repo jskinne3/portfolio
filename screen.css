@@ -163,7 +163,7 @@ blockquote p {
 }
 
 /* table of contents */
-.contents td {margin: 0; padding: 0;}
+.contents td {padding: 0 0 15px 0; margin: 0;}
 .contents h2 {font-family: 'Eras';}
 .contents table td:first-child {padding-right: 20px;}
 .contents table td {vertical-align: text-top;}

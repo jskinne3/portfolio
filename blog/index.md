@@ -39,6 +39,7 @@ No ads, no trackers, just blog
 | Dec | [My favorite characters!](characters) |
 | Jul | [XMLHttpRequest blocked by CORS policy in local HTML document](cors_from_local_file)|
 
+
 ## 2020
 
 |     |         |
@@ -47,6 +48,7 @@ No ads, no trackers, just blog
 | Mar | [On being not afraid](notafraid) |
 | Feb | [Using the Open Syllabus Project API](ospapi) |
 | Jan | [Wikidata words](lexemes) |
+
 
 ## 2019
 
