@@ -2,7 +2,7 @@
 tags: posts
 layout: blog.njk
 title: Cloudflare domain hitches
-description: DNS and SSL certificate gottcha when finding a new home for a website
+description: DNS and SSL certificate gotcha when finding a new home for a website
 date: 2025-08-14T12:00:00
 ---
 
@@ -43,7 +43,7 @@ The biggest trick is navigating to the right place. As [my friend Cassey points 
 1. Within the [Cloudflare dashboard](https://dash.cloudflare.com/)
 2. Click on "Compute (Workers)" on the left menu
 3. Select "Workers & Pages"
-4. From the list of Pages projects, the project you are working on. This is probably where you are accustomed to working with your code's deployments, but there is a secret domain-related thing here.
+4. From the list of Pages projects, click the name of the project you are working on. This is probably where you are accustomed to working with your code's deployments, but there is a secret domain-related thing here.
 5. Find the tab at the top called "Custom domains"
 6. Press the "Set up a custom domain" button:
   ![Set up a custom domain button within Compute (Workers) menu](/img/custom_domain_button.png)
