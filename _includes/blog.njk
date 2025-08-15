@@ -22,6 +22,12 @@ title: John Skiles Skinner's blog
     <meta property="og:description"  content="{{ description }}" />
     <meta name="twitter:image" content="{{ image if image else "/preview/card.jpg" }}" />
     <meta property="og:image"  content="{{ image if image else "/preview/card.jpg" }}" />
+
+    <link rel="canonical" href="https://johnskinnerportfolio.com{{ page.url | escape }}">
+    <meta property="og:url" content="https://johnskinnerportfolio.com{{ page.url | escape }}" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    
     <script>
       function detectColorScheme(){
         var theme="light";
