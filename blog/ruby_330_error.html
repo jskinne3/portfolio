@@ -54,7 +54,7 @@
       <li><a href="#the-problem">Scope of the problem</a></li>
       <li><a href="#error-messages">Error messages</a></li>
       <li><a href="#the-best-solution">The best solution</a></li>
-      <li><a href="#older-versions">Older versions, a less-good solution</a></li>
+      <li><a href="#older-versions">Older versions, a less-good solution</a><ul><li><a href="#openssl1.1disabled">OpenSSL 1.1 has been disabled</a></li></ul></li>
       <li><a href="#further-reading">Further reading and credit</a></li>
     </ul>
 
@@ -281,9 +281,16 @@ make: *** [build-ext] Error 2
     <p>
       <span style="color: darkgoldenrod;">&#9888; <em>Warning:</em></span> There is some advice going around (<a href="https://github.com/rbenv/homebrew-tap/issues/9">on this Homebrew GitHub thread for example</a>) that the solution to this error is to downgrade your OpenSSL to version 1.0, an ancient (2010) version which is no longer supported. This is probably a <strong>bad idea</strong> unless you must install an old version of Ruby (2.3 or earlier) which requires it. OpenSSL version 1.0 <a href="https://www.openssl.org/news/vulnerabilities-1.0.0.html">has not been getting security updates since 2015</a> and OpenSSL version 1.1 <a href="https://www.openssl.org/blog/blog/2023/03/28/1.1.1-EOL/">stopped getting security updates as of late 2023</a>. Using either of these is risky!
     </p>
+
+    <h4 id="openssl1.1disabled">OpenSSL 1.1 has been disabled</h4>
     <p>
-      In fact, <code>openssl@1.1</code> is so old and insecure that Homebrew <a href="https://formulae.brew.sh/formula/openssl@1.1">wisely stopped supporting</a> this outdated version. So, if you are a homebrew user and you want to follow the below steps, you will have to circumvent this limit. Obviously, you would be playing a dangerous game. You may go to SSL jail.
+      In fact, <code>openssl@1.1</code> is so old and insecure that Homebrew <a href="https://formulae.brew.sh/formula/openssl@1.1">wisely stopped supporting</a> this outdated version. You may see this error:
     </p>
+    <pre class="block"><code>error: openssl@1.1 has been disabled because it is not supported upstream! it was disabled on 2024-10-24.</code></pre>
+    <p>
+      So, if you are a homebrew user and you want to follow the below steps, you will have to circumvent this limit. Obviously, you would be playing a dangerous game. You may go to SSL jail.
+    </p>
+
     <p>
       Run this installation command to verify that the old OpenSSL version "has been disabled because it is not supported upstream":
     </p>
@@ -307,7 +314,7 @@ make: *** [build-ext] Error 2
       OK, now that you have sinfully installed an old version of OpenSSL, there is another trick. Skipping this is where people get tangled up in this problem for a long time:
     </p>
     <ol class="block">
-      <li>If you <strong>have ever installed OpenSSL version 3</strong> (as in the "best solution" section above)</li>
+      <li>If you <strong>have ever installed OpenSSL version 3</strong> (as in <a href="#the-best-solution">the "best solution" section</a> above)</li>
       <li>or, if you <strong>have ever installed Ruby 3.1 or higher</strong> on your computer</li>
     </ol>
     <p>then you must unlink OpenSSL version 3 and link up the downgraded version.</p>
