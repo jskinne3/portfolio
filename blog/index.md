@@ -14,6 +14,7 @@ No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenye
 
 ## 2025
 
+* [Qubes installation hitch](qubes_installation_hitch)
 * [Cloudflare domain hitches](cloudflare_domain_hitches)
 * [Ruby tricks](ruby_tricks)
 * [Just start a book club](just_start_a_book_club)
