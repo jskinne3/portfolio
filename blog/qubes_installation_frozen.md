@@ -1,7 +1,7 @@
 ---
 tags: posts
 layout: blog.njk
-title: Qubes installation hitch
+title: Qubes installation frozen
 description: Stuck on accounts-daemon.service
 date: 2025-09-06T12:00:00
 ---
@@ -18,14 +18,14 @@ Today I installed Qubes for the first time! Here are symptoms of a problem I enc
 
 ### Problems I saw
 
-Installing Qubes onto a Framework laptop via a USB drive I encountered a few different versions of a frozen screen. Freezing happened after [initial setup](https://www.qubes-os.org/doc/installation-guide/#initial-setup) step, and after that, upon reboot and entering my disk password.
+Installing Qubes onto a Framework laptop via a USB drive I encountered a few different versions of a frozen or stalled screen. Freezing happened after [initial setup](https://www.qubes-os.org/doc/installation-guide/#initial-setup) step. Upon reboot and entering my disk password it would freeze again.
 
 Sometimes I was seeing text output getting stuck just after this message:
 ```
 Started accounts-daemon.service - Accounts Service
 ```
 
-At other times I was seeing a progress bar advance, gradually reaching 100% and then nothing would happen after. The loading screen with the progress bar was frozen.
+At other times I was seeing a progress bar advance, gradually reaching 100% and then nothing would happen after. The loading screen with the progress bar was stalled.
 
 ### My solution
 
