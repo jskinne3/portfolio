@@ -47,14 +47,14 @@ At GSA we built [an AI tool with safeguards](/blog/GSAi) against data consolidat
 
 Fascists quickly tire of safeguards. Three days ago the head of CISA (🤯!!!) got [busted circumventing these safety measures](https://www.politico.com/news/2026/01/27/cisa-madhu-gottumukkala-chatgpt-00749361), throwing sensitive government documents into the growing pile of privatized data.
 
-In spite of their apparent enthusiasm for AI, the broligarchs within government seem to be giving up on boring, law-abiding internal AI tools like the one we built. They only want AI that can dispatch goon squads.
+In spite of their apparent enthusiasm for AI, the broligarchs within government seem to be giving up on boring, law-abiding internal AI tools like the one we built. They only want software that can dispatch goon squads.
 
 I am not saying they will be able to build the fully automated repression tool of their dreams. Bureaucracy is largely made of humans who can't be wished away by men with a near-religious belief in AI and a delusionally negative view of government workers.
 
 But consider how far they've already come. DOGE bros used AI tools to list thousands of "woke" "DEI" government grants for cancellation per Musk's conspiracy theories. Legitimate civil servants would have refused to compile such a list, but not AI.
 
 ### Takeaway
-Any time the Trump administration says "AI" what you should hear is "repression as a service"
+Any time the Trump administration says "AI" or anything about software or data, what you should hear is "repression as a service"
 
 This has 2 parts:
 1. AI as an excuse to consolidate data
