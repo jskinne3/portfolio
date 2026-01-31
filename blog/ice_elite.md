@@ -19,7 +19,7 @@ The app features gamified neighborhood maps, like Pokémon Go for hunting immigr
 
 > In testimony 404 Media obtained from a case in Oregon, an ICE official said ELITE is what ICE sometimes uses to track the apparent density of people at a particular location to target. "You're going to go to a more dense population rather than [...] like, if there’s one pin at a house and the likelihood of them actually living there is like 10 percent [...] you're not going to go there," the official said. "It's basically a map of the United States. It's kind of like Google Maps."
 
-Dispatching ICE agents to hit "groups of pre-defined aliens specifically targeted by Leadership for action" it allows the administration to order up a goon squad wherever they want, at the touch of a button. Like Uber for authoritarians. Let's call it repression as a service.
+Dispatching ICE agents to hit "groups of pre-defined aliens specifically targeted by Leadership for action" the software allows the administration to order up a goon squad wherever they want, at the touch of a button. Like Uber for authoritarians. Let's call it repression as a service.
 
 To find a "criminal or immigration nexus" the software pulls Americans' personal data from across the government, including data from Health and Human Services and other agencies unrelated to law enforcement. How did ICE and Palantir get all this data together?
 
