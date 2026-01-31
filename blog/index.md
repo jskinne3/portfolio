@@ -12,6 +12,10 @@ John Skiles Skinner blogs at skiles.blue
 
 No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenyellow">&#9640;</span> Just blog
 
+## 2026
+
+* [ICE](Repression as a service)
+
 ## 2025
 
 * [Qubes installation frozen](qubes_installation_frozen)
