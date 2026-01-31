@@ -41,7 +41,7 @@ To avoid obviously targeting voters, another layer of data can be used to provid
 
 Something like this is already happening in Minneapolis where half-forgotten allegations of childcare funding fraud are the excuse for an occupation of the city. With enough data ICE could find similar justification anywhere. Simply ignore the "not for mass prioritization" warning label.
 
-My fellow civil servants would object that an order "find the 'nexus' of Democratic voters under tax audit" is illegal. But software need not raise these objections. Hence broligarchs dream of software allowing them to order up repression without pesky civil servants in the loop.
+My fellow civil servants would object that the order "find the 'nexus' of Democratic voters under tax audit" is illegal. But software need not raise these objections. Hence broligarchs dream of software allowing them to order up repression without pesky civil servants in the loop.
 
 At GSA we built [an AI tool with safeguards](/blog/GSAi) against data consolidation to avoid violations exactly like these. After firing the people who made it, DOGE rolled a version of it out all over government, including at DHS.
 
