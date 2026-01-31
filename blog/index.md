@@ -14,7 +14,7 @@ No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenye
 
 ## 2026
 
-* [ICE](Repression as a service)
+* [Repression as a service](ice_elite)
 
 ## 2025
 
