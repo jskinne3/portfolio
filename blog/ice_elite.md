@@ -13,7 +13,7 @@ John Skiles Skinner \
 
 ---
 
-A manual for ICE's immigrant-targeting computer system, ELITE, was [leaked today](https://www.404media.co/here-is-the-user-guide-for-elite-the-tool-palantir-made-for-ice/) via 404 media. Let's look at it, then step back to evaluate how far we've come along a dangerous road and where that road might take us.
+A manual for ICE's immigrant-targeting computer system, Palantir ELITE, was [leaked today](https://www.404media.co/here-is-the-user-guide-for-elite-the-tool-palantir-made-for-ice/) via 404 media. Let's look at it, then step back to evaluate how far we've come along a dangerous road and where that road might take us.
 
 The app features gamified neighborhood maps, like Pokémon Go for hunting immigrants. Palantir warns the software is "not for mass prioritization of locations where lots of people it [ICE] might detain could be based." But this is what [actually happens](https://www.404media.co/here-is-the-user-guide-for-elite-the-tool-palantir-made-for-ice/) when you give ICE a map and a quota:
 
