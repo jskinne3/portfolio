@@ -31,7 +31,7 @@ At the time of the GSA DOGE presentation I feared that [the goal of this AI stra
 
 A few days later, Wired reported that [DOGE was building exactly this](https://www.wired.com/story/palantir-doge-irs-mega-api-data/): cross-government data connections with Palantir &mdash; the literal company with that name, not just the metaphor.
 
-As sure as walking off with hard drives is illegal, what DOGE did with Palantir is illegal. The laws they violated have boring names like the Antideficiency Act, the Privacy Act, and Federal Acquisition Regulation. These are laws the government used to enforce *on themselves*. Not anymore.
+As sure as walking off with hard drives is illegal, what DOGE did with Palantir is illegal. The laws they violated have boring names like the Antideficiency Act, the Privacy Act, and Federal Acquisition Regulation. These are laws the government used to enforce *on itself*. Not anymore.
 
 The theft isn't over. ICE thugs are now [demanding state-level voter data](https://www.theguardian.com/us-news/2026/jan/26/pam-bondi-minnesota-voter-rolls-ice-surge) at gunpoint. If they get that data, presumably, they will throw it into the mix with all the other stolen data available to repression as a service.
 
