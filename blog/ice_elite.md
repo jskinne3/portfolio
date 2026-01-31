@@ -21,7 +21,7 @@ The app features gamified neighborhood maps, like Pokémon Go for hunting immigr
 
 Dispatching ICE agents to hit "groups of pre-defined aliens specifically targeted by Leadership for action" the software allows the administration to order up a goon squad wherever they want, at the touch of a button. Like Uber for authoritarians. Let's call it repression as a service.
 
-To find a "criminal or immigration nexus" the software pulls Americans' personal data from across the government, including data from Health and Human Services and other agencies unrelated to law enforcement. How did ICE and Palantir get all this data together?
+To target a "criminal or immigration nexus" the software pulls Americans' personal data from across the government, including data from Health and Human Services and other agencies unrelated to law enforcement. How did ICE and Palantir get all this data together?
 
 This leaked video of [a presentation by DOGE](https://bsky.app/profile/skiles.blue/post/3llxdvbsjik2n) at GSA headquarters 10 months ago outlines the plan. Couched as a part of their AI strategy, Musk's people said they needed to scoop up all government data so AI could use it.
 
