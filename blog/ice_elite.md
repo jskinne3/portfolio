@@ -60,6 +60,9 @@ This has 2 parts:
 1. AI as an excuse to consolidate data
 2. AI to execute orders that humans would refuse
 
-Neither part is complete, yet. Of the repression machine that I feared 10 months ago, the administration has implemented to only to a midpoint. The more data they consolidate, the further we travel down this dangerous road.
+Neither part is complete, yet. Of the repression machine that I feared 10 months ago, the administration has implemented only a part. The more data they consolidate, the further we travel down this dangerous road.
 
+### Follow-up
+The [Bluesky thread version of this post](https://bsky.app/profile/skiles.blue/post/3mdovarcapc2d) is getting quote-posed in German, Swedish, Norwegian, French and Greek because apparently governments across Europe are contemplating contracts with Palantir.
 
+Europe, do me a favor and don't contribute to a worldwide tyranny machine.
