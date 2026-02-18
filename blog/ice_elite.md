@@ -63,6 +63,6 @@ This has 2 parts:
 Neither part is complete, yet. Of the repression machine that I feared 10 months ago, the administration has implemented only some. The more data they consolidate, the further we travel down this dangerous road.
 
 ### Follow-up
-The [Bluesky thread version of this post](https://bsky.app/profile/skiles.blue/post/3mdovarcapc2d) is getting quote-posed in German, Swedish, Norwegian, French and Greek because apparently governments across Europe are contemplating contracts with Palantir.
+The [Bluesky thread version of this post](https://bsky.app/profile/skiles.blue/post/3mdovarcapc2d) is getting quote-posted in German, Swedish, Norwegian, French and Greek because apparently governments across Europe are contemplating contracts with Palantir.
 
 Europe, do me a favor and don't contribute to a worldwide tyranny machine.
