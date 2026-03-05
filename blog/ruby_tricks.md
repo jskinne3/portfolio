@@ -1,6 +1,6 @@
 ---
-tags: posts
-layout: blog.njk
+layout: page.njk
+section: "blog"
 title: "Favorite Ruby tricks"
 description: Toy problems using Ruby's capacity to manipulate arrays, hashes and strings
 date: 2025-06-24T12:00:00

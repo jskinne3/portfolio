@@ -1,6 +1,6 @@
 ---
-tags: posts
-layout: blog.njk
+layout: page.njk
+section: "blog"
 title: "How to hack queer-hating lobbyists"
 description: "The Christian nationalist plan to hide, and how it backfires"
 image: /preview/MuskBreakingUp.jpg
