@@ -25,6 +25,7 @@ description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 * [Matt Henry](https://matthenry.fyi/)
 * [Melissa Chan](https://www.melissachan.com/)
 * [Matt Steele](https://www.steele.blue/)
+* [Elizabeth Zaleski](https://elizabethzaleski.com/)
 
 ### Refreshing blogs
 
@@ -56,6 +57,7 @@ I mostly don't know these people but I read their words when I need a break from
 * [But does it float](https://butdoesitfloat.com/)
 * [Houghton Mifflin Readers](https://hmr.posthaven.com/)
 * [Aesthetics fandom wiki](https://aesthetics.fandom.com/)
+* [Great Farts of Literature](https://greatfartsofliterature.com/)
 
 ### Guides, rants, manifestos
 
@@ -102,6 +104,7 @@ Tech media, feminism, leaks, whistleblowers
 
 ### Nebraska
 
+* [Flatwater Free Press](https://flatwaterfreepress.org/)
 * [Seeing Red Nebraska](https://seeingrednebraska.com/)
 * [Nebraska Newspapers project](https://nebnewspapers.unl.edu/)
 * [Nebraska Examiner](https://nebraskaexaminer.com/)
