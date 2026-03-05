@@ -72,6 +72,8 @@ I mostly don't know these people but I read their words when I need a break from
 
 ### Independent journalism
 
+Tech media, feminism, leaks, whistleblowers
+
 * [The 19th](https://19thnews.org/)
 * [Marisa Kabas](https://www.thehandbasket.co/)
 * [Brian Merchant](https://www.bloodinthemachine.com/)
@@ -79,7 +81,6 @@ I mostly don't know these people but I read their words when I need a break from
 * [Amanda Marcotte](https://www.salon.com/writer/amanda_marcotte)
 * [Tech Policy Press](https://www.techpolicy.press/)
 * [404 Media](https://www.404media.co/)
-* [Seeing Red Nebraska](https://seeingrednebraska.com/)
 * [Freedom of the Press Foundation](https://freedom.press/)
 * [SecureDrop](https://securedrop.org/)
 * [Distributed Denial of Secrets](https://ddosecrets.org/)
