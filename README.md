@@ -14,7 +14,8 @@ Then visit <http://localhost:8080/>
 ## Appears in
 
 * Performance tracked [on the 11ty Leaderboard](https://www.11ty.dev/speedlify/johnskinnerportfolio-com/)
-* [11ty Bundle Showcase]
+* [11ty Bundle Showcase](https://11tybundle.dev/showcase/)
+* Artem Yegorov's [Awesome Ruby blogs](https://github.com/Yegorov/awesome-ruby-blogs)
 
 ## Colophon
 

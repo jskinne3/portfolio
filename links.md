@@ -24,6 +24,7 @@ description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 * [Soﬁa Jawed-Wessel](https://sofiajawedwessel.com/)
 * [Matt Henry](https://matthenry.fyi/)
 * [Melissa Chan](https://www.melissachan.com/)
+* [Matt Steele](https://www.steele.blue/)
 
 ### Refreshing blogs
 
@@ -90,10 +91,11 @@ I mostly don't know these people but I read their words when I need a break from
 
 ### Academia
 
-* [M.J. Crockett](https://www.crockettlab.org/)
-* [Social Media Lab](https://socialmedialab.ca/)
 * [Citizen Lab](https://citizenlab.ca/)
+* [Social Media Lab](https://socialmedialab.ca/)
 * [History Lab](https://lab.history.columbia.edu/)
+* [Distributed AI Research (DAIR) Institute](https://www.dair-institute.org/)
+* [M.J. Crockett](https://www.crockettlab.org/)
 
 ## Resources by region
 
