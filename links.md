@@ -51,7 +51,6 @@ I mostly don't know these people but I read their words when I need a break from
 * [Consumer Aesthetics Research Institute](https://cari.institute/)
 * [Neal](https://neal.fun/)
 * [GIF Gallery](https://momg.neocities.org/)
-* [Files 4 Fun BBS](https://f4fbbs.com/BBS-Files.php)
 * [MILF god](https://milfgod.net/)
 * [But does it float](https://butdoesitfloat.com/)
 * [Houghton Mifflin Readers](https://hmr.posthaven.com/)
@@ -63,9 +62,15 @@ I mostly don't know these people but I read their words when I need a break from
 * [Resonant computing manifesto](https://resonantcomputing.org/)
 * [Data and politics](https://www.dataandpolitics.net/)
 
+### 1990s websites still up
+
+* [Barney Fun Page](https://impressive.net/games/barney/fun.cgi)
+* [Files 4 Fun BBS](https://f4fbbs.com/BBS-Files.php)
+
 ## Making change
 
 ### Independent journalism
+
 * [The 19th](https://19thnews.org/)
 * [Marisa Kabas](https://www.thehandbasket.co/)
 * [Brian Merchant](https://www.bloodinthemachine.com/)
@@ -79,6 +84,7 @@ I mostly don't know these people but I read their words when I need a break from
 * [Distributed Denial of Secrets](https://ddosecrets.org/)
 
 ### Dogooder tech hiring
+
 * [Diversify tech](https://newsletter.diversifytech.com/)
 * [Tech jobs for good](https://techjobsforgood.com/)
 
@@ -92,14 +98,12 @@ I mostly don't know these people but I read their words when I need a break from
 ## Resources by region
 
 ### Nebraska
+
 * [Seeing Red Nebraska](https://seeingrednebraska.com/)
 * [Nebraska Newspapers project](https://nebnewspapers.unl.edu/)
 * [Nebraska Examiner](https://nebraskaexaminer.com/)
 
 ### California
+
 * [California Maternity Leave: How to milk it](https://typeamomtales.com/2015/01/08/california-maternity-leave-how-to-milk-it/)
-
-## 1990s websites
-
-* [Barney Fun Page](https://impressive.net/games/barney/fun.cgi)
 
