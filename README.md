@@ -1,5 +1,9 @@
 # My portfolio website
 
+<https://johnskinnerportfolio.com/>
+
+## Local installation
+
 Clone this repo and install Eleventy with
 ```
 npm install @11ty/eleventy
@@ -19,4 +23,5 @@ Then visit <http://localhost:8080/>
 
 ## Colophon
 
+* Built with [Eleventy](https://www.11ty.dev/)
 * Font choices were inspred by [an old magazine](https://colorcomputerarchive.com/repo/Documents/Magazines/Color%20Computer%20Magazine/Color%20Computer%20Magazine%20-%208311%20-%20November%201983.pdf) found at [Color Computer Archive](https://colorcomputerarchive.com/)
