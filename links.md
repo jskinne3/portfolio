@@ -16,13 +16,14 @@ description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 * [Wesley (aka Wajib)](https://wajib.space/)
 * [Cassey Lottman](https://cassey.dev/)
 * [Micah Lee](https://micahflee.com/)
-* [Eric Gade](https://www.homoridiculus.com/)
+* [Eric Gade](https://eric.place/)
 * [Anita Cheng](https://anitacheng.com/)
 * [Ethan Marcotte](https://ethanmarcotte.com/)
 * [Alia Salim](https://ealiasalim.super.site/)
 * [Mel Choyce](https://melchoyce.design/)
 * [Soﬁa Jawed-Wessel](https://sofiajawedwessel.com/)
-* [Matt Henry](matthenry.fyi)
+* [Matt Henry](https://matthenry.fyi/)
+* [Melissa Chan](https://www.melissachan.com/)
 
 ### Refreshing blogs
 
@@ -70,9 +71,11 @@ I mostly don't know these people but I read their words when I need a break from
 * [Cynthia Brumfield](metacurity.com)
 * [Amanda Marcotte](https://www.salon.com/writer/amanda_marcotte)
 * [Tech Policy Press](https://www.techpolicy.press/)
+* [404 Media](https://www.404media.co/)
 * [Seeing Red Nebraska](https://seeingrednebraska.com/)
 * [Freedom of the Press Foundation](https://freedom.press/)
 * [SecureDrop](https://securedrop.org/)
+* [Distributed Denial of Secrets](https://ddosecrets.org/)
 
 ### Dogooder tech hiring
 * [Diversify tech](https://newsletter.diversifytech.com/)
@@ -81,3 +84,13 @@ I mostly don't know these people but I read their words when I need a break from
 ### Academia
 
 * [M.J. Crockett](https://www.crockettlab.org/)
+* [Social Media Lab](https://socialmedialab.ca/)
+* [Citizen Lab](https://citizenlab.ca/)
+* [History Lab](https://lab.history.columbia.edu/)
+
+## Resources by region
+
+### Nebraska
+* [Seeing Red Nebraska](https://seeingrednebraska.com/)
+* [Nebraska Newspapers project](https://nebnewspapers.unl.edu/)
+* [Nebraska Examiner](https://nebraskaexaminer.com/)
