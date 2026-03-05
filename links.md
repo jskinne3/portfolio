@@ -1,6 +1,8 @@
 ---
 layout: page.njk
 section: links
+title: "John Skies Skinner's links page"
+description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 ---
 
 # Links
@@ -38,8 +40,6 @@ I mostly don't know these people but I read their words when I need a break from
 * [Andrew Lilley Brinker](https://www.alilleybrinker.com/)
 * [Don Moynihan](https://donmoynihan.substack.com/)
 * [Matt Stoller](https://www.thebignewsletter.com/)
-
-
 
 ## 🏄 Surf the web
 
