@@ -29,6 +29,7 @@ description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 
 I mostly don't know these people but I read their words when I need a break from social media garbage
 
+* [MetaFilter](https://www.metafilter.com/)
 * [Marginalia](https://www.marginalia.nu/)
 * [Rebecca Watson](https://skepchick.org/)
 * [Seth Larson](https://sethmlarson.dev/)
@@ -94,3 +95,11 @@ I mostly don't know these people but I read their words when I need a break from
 * [Seeing Red Nebraska](https://seeingrednebraska.com/)
 * [Nebraska Newspapers project](https://nebnewspapers.unl.edu/)
 * [Nebraska Examiner](https://nebraskaexaminer.com/)
+
+### California
+* [California Maternity Leave: How to milk it](https://typeamomtales.com/2015/01/08/california-maternity-leave-how-to-milk-it/)
+
+## 1990s websites
+
+* [Barney Fun Page](https://impressive.net/games/barney/fun.cgi)
+
