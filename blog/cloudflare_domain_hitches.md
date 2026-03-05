@@ -1,6 +1,6 @@
 ---
-tags: posts
-layout: blog.njk
+layout: page.njk
+section: "blog"
 title: Cloudflare domain hitches
 description: DNS and SSL certificate gotcha when finding a new home for a website
 date: 2025-08-14T12:00:00

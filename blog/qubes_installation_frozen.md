@@ -1,6 +1,6 @@
 ---
-tags: posts
-layout: blog.njk
+layout: page.njk
+section: "blog"
 title: Qubes installation frozen
 description: And un-sticking it with kernel-latest
 date: 2025-09-06T12:00:00

@@ -1,14 +1,12 @@
 ---
-tags: posts
-layout: blog.njk
-title: "Skiles.blue blog"
-description: "The blog of John Skies Skinner: No ads | No trackers | Just blog"
+layout: page.njk
+section: "blog"
+title: "John Skies Skinner's blog"
+description: "No ads, no trackers, just blog"
 date: 2025-05-29T12:00:00
 ---
 
 # {{ title }}
-
-John Skiles Skinner blogs at skiles.blue
 
 No ads <span class="greenyellow">&#9639;</span> No trackers <span class="greenyellow">&#9640;</span> Just blog
 

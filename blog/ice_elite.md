@@ -1,6 +1,6 @@
 ---
-tags: posts
-layout: blog.njk
+layout: page.njk
+section: "blog"
 title: "Repression as a service"
 description: "On the leaked manual for ELITE, the immigrant-targeting computer, and how far we have come down a dangerous road."
 date: 2026-01-30T12:00:00

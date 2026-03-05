@@ -1,6 +1,6 @@
 ---
-tags: posts
-layout: blog.njk
+layout: page.njk
+section: "blog"
 title: "Ship of Theseus beats strangler fig"
 description: Parasitic plants are not as popular as boats 🌱⛵
 date: 2024-10-22T12:00:00
