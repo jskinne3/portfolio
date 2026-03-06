@@ -31,6 +31,8 @@ description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 * [Amy Mok](https://www.recodeleadership.com/)
 * [Jia Gu](https://jia.fyi/)
 * [AJ Farkas](https://www.afarkas.com/)
+* [Anne Petersen](https://annepetersen.is/)
+* [Dave Luetger](https://luetger.com/)
 
 ### Refreshing blogs
 
