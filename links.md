@@ -33,6 +33,7 @@ description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 * [AJ Farkas](https://www.afarkas.com/)
 * [Anne Petersen](https://annepetersen.is/)
 * [Dave Luetger](https://luetger.com/)
+* [Julia Lindpaintner](https://www.julialindpaintner.com/)
 
 ### Refreshing blogs
 
