@@ -4,7 +4,7 @@
 
 ## Local installation
 
-Clone this repo and install Eleventy with
+Clone this repo. Install Eleventy with
 ```
 npm install @11ty/eleventy
 ```
