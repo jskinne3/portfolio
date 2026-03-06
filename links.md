@@ -26,6 +26,11 @@ description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 * [Melissa Chan](https://www.melissachan.com/)
 * [Matt Steele](https://www.steele.blue/)
 * [Elizabeth Zaleski](https://elizabethzaleski.com/)
+* [Matt Jadud](https://jadud.com/)
+* [Chuck Borges](https://chuck4md.com)
+* [Amy Mok](https://www.recodeleadership.com/)
+* [Jia Gu](https://jia.fyi/)
+* [AJ Farkas](https://www.afarkas.com/)
 
 ### Refreshing blogs
 
@@ -112,4 +117,13 @@ Tech media, feminism, leaks, whistleblowers
 ### California
 
 * [California Maternity Leave: How to milk it](https://typeamomtales.com/2015/01/08/california-maternity-leave-how-to-milk-it/)
+
+### Pennsylvania
+
+* [Philly Pigeon Tours](https://phillypigeontours.com/)
+
+### Illinois
+
+* [Haymarket Studio](https://haymarketstudio.co/)
+* [Illinois Digital Service](https://illinoisdigitalservice.org/)
 
