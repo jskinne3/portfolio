@@ -94,10 +94,11 @@ Tech media, feminism, leaks, whistleblowers
 * [SecureDrop](https://securedrop.org/)
 * [Distributed Denial of Secrets](https://ddosecrets.org/)
 
-### Dogooder tech hiring
+### Dogooder tech stuff
 
 * [Diversify tech](https://newsletter.diversifytech.com/)
 * [Tech jobs for good](https://techjobsforgood.com/)
+* [Specification-Driven Legacy System Modernization](https://spec-ops.ai/)
 
 ### Academia
 
