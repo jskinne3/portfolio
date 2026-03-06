@@ -34,6 +34,7 @@ description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 * [Anne Petersen](https://annepetersen.is/)
 * [Dave Luetger](https://luetger.com/)
 * [Julia Lindpaintner](https://www.julialindpaintner.com/)
+* [Kate Fisher](https://katefisher.info)
 
 ### Refreshing blogs
 
