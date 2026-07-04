@@ -53,6 +53,7 @@ I mostly don't know these people but I read their words when I need a break from
 * [Andrew Lilley Brinker](https://www.alilleybrinker.com/)
 * [Don Moynihan](https://donmoynihan.substack.com/)
 * [Matt Stoller](https://www.thebignewsletter.com/)
+* [lr0](https://lr0.org/blog/)
 
 ## 🏄 Surf the web
 
