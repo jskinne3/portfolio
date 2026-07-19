@@ -54,6 +54,7 @@ I mostly don't know these people but I read their words when I need a break from
 * [Don Moynihan](https://donmoynihan.substack.com/)
 * [Matt Stoller](https://www.thebignewsletter.com/)
 * [lr0](https://lr0.org/blog/)
+* [Christine Lemmer-Webber](https://dustycloud.org/blog/)
 
 ## 🏄 Surf the web
 
