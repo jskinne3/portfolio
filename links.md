@@ -55,6 +55,9 @@ I mostly don't know these people but I read their words when I need a break from
 * [Matt Stoller](https://www.thebignewsletter.com/)
 * [lr0](https://lr0.org/blog/)
 * [Christine Lemmer-Webber](https://dustycloud.org/blog/)
+* [Adam Cadre](https://adamcadre.ac/)
+* [Hillel Wayne](https://www.hillelwayne.com/)
+* [Dan Luu](https://danluu.com)
 
 ## 🏄 Surf the web
 
@@ -69,6 +72,7 @@ I mostly don't know these people but I read their words when I need a break from
 * [Houghton Mifflin Readers](https://hmr.posthaven.com/)
 * [Aesthetics fandom wiki](https://aesthetics.fandom.com/)
 * [Great Farts of Literature](https://greatfartsofliterature.com/)
+* [Archive of Archives](https://archiveofarchives.com/)
 
 ### Guides, rants, manifestos
 
