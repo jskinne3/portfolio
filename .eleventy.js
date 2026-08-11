@@ -2,6 +2,7 @@ const { feedPlugin } = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("test.json");
   eleventyConfig.addPassthroughCopy("screen.css");
   eleventyConfig.addPassthroughCopy("print.css");
   eleventyConfig.addPassthroughCopy("favicon.ico");
