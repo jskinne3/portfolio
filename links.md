@@ -51,8 +51,6 @@ I mostly don't know these people but I read their words when I need a break from
 * [Seirdy](https://seirdy.one/)
 * [Robin Sloan](https://www.robinsloan.com/)
 * [Andrew Lilley Brinker](https://www.alilleybrinker.com/)
-* [Don Moynihan](https://donmoynihan.substack.com/)
-* [Matt Stoller](https://www.thebignewsletter.com/)
 * [lr0](https://lr0.org/blog/)
 * [Christine Lemmer-Webber](https://dustycloud.org/blog/)
 * [Adam Cadre](https://adamcadre.ac/)
@@ -79,6 +77,7 @@ I mostly don't know these people but I read their words when I need a break from
 * [18F](https://18f.org/)
 * [Resonant computing manifesto](https://resonantcomputing.org/)
 * [Data and politics](https://www.dataandpolitics.net/)
+* [The Missing Missing Reasons](https://issendai.com/psychology/estrangement/missing-missing-reasons/) of estranged parents, Issendai.com
 
 ### 1990s websites still up
 
@@ -115,6 +114,12 @@ Tech media, feminism, leaks, whistleblowers
 * [History Lab](https://lab.history.columbia.edu/)
 * [Distributed AI Research (DAIR) Institute](https://www.dair-institute.org/)
 * [M.J. Crockett](https://www.crockettlab.org/)
+
+### Antitrust
+
+* [Don Moynihan](https://donmoynihan.substack.com/)
+* [Matt Stoller](https://www.thebignewsletter.com/)
+* [Worse on Purpose](https://www.worseonpurpose.com/)
 
 ## Resources by region
 
