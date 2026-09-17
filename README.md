@@ -21,7 +21,6 @@ Then visit <http://localhost:8080/>
 * [11ty Bundle Showcase](https://11tybundle.dev/showcase/)
 * Artem Yegorov's [Awesome Ruby blogs](https://github.com/Yegorov/awesome-ruby-blogs)
 
-## Colophon
+## License and attribution
 
-* Built with [Eleventy](https://www.11ty.dev/)
-* Font choices were inspred by [an old magazine](https://colorcomputerarchive.com/repo/Documents/Magazines/Color%20Computer%20Magazine/Color%20Computer%20Magazine%20-%208311%20-%20November%201983.pdf) found at [Color Computer Archive](https://colorcomputerarchive.com/)
+Attirbution and license information is available [in the colophon](https://johnskinnerportfolio.com/colophon/)
