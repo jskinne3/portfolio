@@ -17,4 +17,6 @@ The body text is duospaced, inspired by [Command Line Interface Guidelines](http
 
 I first typed this website on an old IBM Model M keyboard, and more recently on a Keychron Q11 QMK.
 
+The text is licensed with the [Creative Commons Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/). You can use it any way you like, including commercially, provided that you attribute it to me, John Skiles Skinner, and include a link to this website.
+
 No tracking scripts or pixels are used on this website.
