@@ -45,7 +45,6 @@ I mostly don't know these people but I read their words when I need a break from
 * [Rebecca Watson](https://skepchick.org/)
 * [Seth Larson](https://sethmlarson.dev/)
 * [Anil Dash](https://www.anildash.com/)
-* [Cory Doctorow](https://pluralistic.net/)
 * [Rach Smith](https://rachsmith.com/)
 * [Vlad-Stefan Harbuz](https://vlad.website/)
 * [Seirdy](https://seirdy.one/)
@@ -105,6 +104,8 @@ Tech media, feminism, leaks, whistleblowers
 
 * [Diversify tech](https://newsletter.diversifytech.com/)
 * [Tech jobs for good](https://techjobsforgood.com/)
+* [Digital Services Coalition](https://digitalservicescoalition.org/)
+* [DSCovery](https://dscovery.fly.dev/)
 * [Specification-Driven Legacy System Modernization](https://spec-ops.ai/)
 
 ### Academia
@@ -120,6 +121,7 @@ Tech media, feminism, leaks, whistleblowers
 * [Don Moynihan](https://donmoynihan.substack.com/)
 * [Matt Stoller](https://www.thebignewsletter.com/)
 * [Worse on Purpose](https://www.worseonpurpose.com/)
+* [Cory Doctorow](https://pluralistic.net/)
 
 ## Resources by region
 
