@@ -78,6 +78,10 @@ I mostly don't know these people but I read their words when I need a break from
 * [Data and politics](https://www.dataandpolitics.net/)
 * [The Missing Missing Reasons](https://issendai.com/psychology/estrangement/missing-missing-reasons/) of estranged parents, Issendai.com
 
+### Computer job resources
+
+* [When2meet](https://www.when2meet.com)
+
 ### 1990s websites still up
 
 * [Barney Fun Page](https://impressive.net/games/barney/fun.cgi)
