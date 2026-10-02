@@ -81,6 +81,7 @@ I mostly don't know these people but I read their words when I need a break from
 ### Computer job resources
 
 * [When2meet](https://www.when2meet.com)
+* [Wajib's Computer and Internet Resources](https://www.wajib.space/posts/computer-and-internet-resources/)
 
 ### 1990s websites still up
 
