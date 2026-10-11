@@ -55,6 +55,7 @@ I mostly don't know these people but I read their words when I need a break from
 * [Adam Cadre](https://adamcadre.ac/)
 * [Hillel Wayne](https://www.hillelwayne.com/)
 * [Dan Luu](https://danluu.com)
+* [Robin Reel](https://dreamstation.systems/personal/blog.html)
 
 ## 🏄 Surf the web
 
@@ -81,6 +82,7 @@ I mostly don't know these people but I read their words when I need a break from
 ### Computer job resources
 
 * [When2meet](https://www.when2meet.com)
+* [TosDiff](https://tosdiff.org/); detect when legal documents change 
 * [Wajib's Computer and Internet Resources](https://www.wajib.space/posts/computer-and-internet-resources/)
 
 ### Search engines
