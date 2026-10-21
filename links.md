@@ -71,6 +71,7 @@ I mostly don't know these people but I read their words when I need a break from
 * [Aesthetics fandom wiki](https://aesthetics.fandom.com/)
 * [Great Farts of Literature](https://greatfartsofliterature.com/)
 * [Archive of Archives](https://archiveofarchives.com/)
+* [Paleofuture](https://paleofuture.com/) by Matt Novak
 
 ### Guides, rants, manifestos
 
@@ -112,7 +113,7 @@ Tech media, feminism, leaks, whistleblowers
 * [Freedom of the Press Foundation](https://freedom.press/)
 * [SecureDrop](https://securedrop.org/)
 * [Distributed Denial of Secrets](https://ddosecrets.org/)
-* * [Kate Manne](https://katemanne.substack.com/)
+* [Kate Manne](https://katemanne.substack.com/)
 
 ### Dogooder tech stuff
 
