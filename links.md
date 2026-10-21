@@ -72,6 +72,7 @@ I mostly don't know these people but I read their words when I need a break from
 * [Great Farts of Literature](https://greatfartsofliterature.com/)
 * [Archive of Archives](https://archiveofarchives.com/)
 * [Paleofuture](https://paleofuture.com/) by Matt Novak
+* [McMansion Hell](https://mcmansionhell.com/)
 
 ### Guides, rants, manifestos
 
