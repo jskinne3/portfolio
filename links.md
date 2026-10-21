@@ -38,7 +38,7 @@ description: "Guides, blogs, manifestos, jewels of the World Wide Web"
 
 ### Refreshing blogs
 
-I mostly don't know these people but I read their words when I need a break from social media garbage
+I mostly don't know these people but I read their words when I need a break from social media garbage. Mostly alt-tech.
 
 * [MetaFilter](https://www.metafilter.com/)
 * [Marginalia](https://www.marginalia.nu/)
@@ -112,6 +112,7 @@ Tech media, feminism, leaks, whistleblowers
 * [Freedom of the Press Foundation](https://freedom.press/)
 * [SecureDrop](https://securedrop.org/)
 * [Distributed Denial of Secrets](https://ddosecrets.org/)
+* * [Kate Manne](https://katemanne.substack.com/)
 
 ### Dogooder tech stuff
 
